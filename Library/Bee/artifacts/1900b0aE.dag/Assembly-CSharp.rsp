@@ -359,6 +359,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Zenject-PoolMonitor-Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Zenject-ReflectionBaking-Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Zenject.ref.dll"
+"Assets/Art/AurynSky/Gems Ultimate Pack/Scripts/AnimationScript.cs"
 "Assets/Art/Joystick Pack/Examples/JoystickPlayerExample.cs"
 "Assets/Art/Joystick Pack/Examples/JoystickSetterExample.cs"
 "Assets/Art/Joystick Pack/Scripts/Base/Joystick.cs"
