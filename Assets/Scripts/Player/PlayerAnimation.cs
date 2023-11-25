@@ -5,30 +5,37 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     private Animator anim;
-    private static string movementName = "Speed";
+    private static string movementAnimName = "Speed";
+    private static string breakingObjectAnimName = "Breaking";
     private void Awake()
     {
         anim = GetComponent<Animator>();
     }
     private void OnEnable()
     {
-       
+        StoneInteraction.OnPlayerBreakObjectAnim += ObjectBreakAnimation;
         PlayerInput.OnPlayerInput += MovementAnimation;
+    }
+    private void OnDisable()
+    {
+        StoneInteraction.OnPlayerBreakObjectAnim -= ObjectBreakAnimation;
+        PlayerInput.OnPlayerInput -= MovementAnimation;
     }
     private void MovementAnimation(Vector3 movementVector)
     {
         if (movementVector.x != 0 || movementVector.z != 0)
         {
-            anim.SetFloat(movementName, 1.0f);
+            anim.SetFloat(movementAnimName, 1.0f);
         }
         else
         {
-            anim.SetFloat(movementName, 0.0f);
+            anim.SetFloat(movementAnimName, 0.0f);
         }
 
     }
-    private void OnDisable()
+    private void ObjectBreakAnimation(bool state)
     {
-        PlayerInput.OnPlayerInput -= MovementAnimation;
+        anim.SetBool(breakingObjectAnimName, state);
     }
+    
 }

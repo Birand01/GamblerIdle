@@ -331,6 +331,8 @@
 -r:"C:/Users/90538/Desktop/GithubProjects/GamblerIdle/Library/PackageCache/com.unity.testtools.codecoverage@1.2.3/lib/ReportGenerator/ReportGeneratorMerged.dll"
 -r:"C:/Users/90538/Desktop/GithubProjects/GamblerIdle/Library/PackageCache/com.unity.visualscripting@1.8.0/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-firstpass.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Cinemachine.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/com.unity.cinemachine.editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UniRx.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.EditorCoroutines.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Performance.Profile-Analyzer.Editor.ref.dll"
@@ -368,10 +370,12 @@
 "Assets/Art/Joystick Pack/Scripts/Joysticks/FloatingJoystick.cs"
 "Assets/Art/Joystick Pack/Scripts/Joysticks/VariableJoystick.cs"
 "Assets/Scripts/Base/DependencyInjector.cs"
+"Assets/Scripts/Base/InteractionBase.cs"
 "Assets/Scripts/Player/PlayerAnimation.cs"
 "Assets/Scripts/Player/PlayerController.cs"
 "Assets/Scripts/Player/PlayerInput.cs"
 "Assets/Scripts/Player/PlayerMovement.cs"
+"Assets/Scripts/Stone/StoneInteraction.cs"
 -langversion:9.0
 
 /deterministic
