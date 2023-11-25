@@ -371,11 +371,13 @@
 "Assets/Art/Joystick Pack/Scripts/Joysticks/VariableJoystick.cs"
 "Assets/Scripts/Base/DependencyInjector.cs"
 "Assets/Scripts/Base/InteractionBase.cs"
+"Assets/Scripts/Interactions/Diamond/DiamondInteraction.cs"
+"Assets/Scripts/Interactions/Stone/StoneInteraction.cs"
+"Assets/Scripts/Managers/InstantiationManager/DiamondInstantiator.cs"
 "Assets/Scripts/Player/PlayerAnimation.cs"
 "Assets/Scripts/Player/PlayerController.cs"
 "Assets/Scripts/Player/PlayerInput.cs"
 "Assets/Scripts/Player/PlayerMovement.cs"
-"Assets/Scripts/Stone/StoneInteraction.cs"
 -langversion:9.0
 
 /deterministic

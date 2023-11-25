@@ -131,8 +131,8 @@
     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Operators\SubscribeOnMainThread.cs" />
     <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\WhereSelect.cs" />
     <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\Timer.cs" />
-    <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservableInitializePotentialDragTrigger.cs" />
     <Compile Include="Assets\Plugins\UniRx\Scripts\Operators\Concat.cs" />
+    <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\Triggers\ObservableInitializePotentialDragTrigger.cs" />
     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\UnityUIComponentExtensions.cs" />
     <Compile Include="Assets\Plugins\UniRx\Scripts\UnityEngineBridge\MainThreadDispatcher.cs" />
     <Compile Include="Assets\Plugins\UniRx\Scripts\InternalUtil\ExceptionExtensions.cs" />
