@@ -8,23 +8,24 @@ public class StoneInteraction : InteractionBase
     public static event Action<bool> OnPlayerBreakObjectAnim;
     public static event Action<int, float> OnProduceDiamond;
 
-    [SerializeField] private float timer, totalTimeSpentToProduceDiamond;
+    [SerializeField] private float timer, diamondProduceTime;
     [SerializeField] private int diamondPlaceIndex;
     private float yAxis;
     protected override void OnTriggerStayAction(Collider other)
     {
         timer += Time.deltaTime;
-        if (timer >= totalTimeSpentToProduceDiamond)
+        
+        if (timer >= diamondProduceTime)
         {
 
             OnProduceDiamond?.Invoke(diamondPlaceIndex, yAxis);
             diamondPlaceIndex++;
-            if (diamondPlaceIndex >= 8)
+            if (diamondPlaceIndex >= 4)
             {
                 diamondPlaceIndex = 0;
-                yAxis += 0.6f;
+            //    yAxis += 0.6f;
             }
-         
+
             timer = 0;
         }
 

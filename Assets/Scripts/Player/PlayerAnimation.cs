@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class PlayerAnimation : MonoBehaviour
     private Animator anim;
     private static string movementAnimName = "Speed";
     private static string breakingObjectAnimName = "Breaking";
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -32,6 +34,10 @@ public class PlayerAnimation : MonoBehaviour
             anim.SetFloat(movementAnimName, 0.0f);
         }
 
+    }
+    public void ScoreTextEvent()
+    {
+        Debug.Log("DONE!");
     }
     private void ObjectBreakAnimation(bool state)
     {
