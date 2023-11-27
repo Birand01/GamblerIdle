@@ -61,9 +61,12 @@
     <Compile Include="Assets\Scripts\Base\InteractionBase.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
-    <Compile Include="Assets\Scripts\Interactions\Stone\StoneInteraction.cs" />
+    <Compile Include="Assets\Scripts\Interactions\Stone\StoneAreaInteraction.cs" />
+    <Compile Include="Assets\Scripts\Hammer\HammerDurability.cs" />
     <Compile Include="Assets\Art\AurynSky\Gems Ultimate Pack\Scripts\AnimationScript.cs" />
     <Compile Include="Assets\Scripts\Base\DependencyInjector.cs" />
+    <Compile Include="Assets\Scripts\Interactions\Mechanic\RepairAreaInteraction.cs" />
+    <Compile Include="Assets\Scripts\Player\AnimationEvents.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Examples\JoystickPlayerExample.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Scripts\Base\Joystick.cs" />
@@ -73,9 +76,6 @@
     <Compile Include="Assets\Scripts\Interactions\Diamond\DiamondInteraction.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\Interactions\Mechanic\MechanicInteraction.cs" />
-    <Compile Include="Assets\Scripts\Hammer\HammerDurability.cs" />
-    <Compile Include="Assets\Scripts\Player\AnimationEvents.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

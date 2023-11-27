@@ -367,7 +367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
-  diamondProduceTime: 0
+  diamondProduceTime: 4
   diamondPlaceIndex: 0
 --- !u!1 &5886396676630837476
 GameObject:

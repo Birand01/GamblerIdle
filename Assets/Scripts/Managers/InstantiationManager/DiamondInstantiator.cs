@@ -24,12 +24,12 @@ public class DiamondInstantiator : MonoBehaviour
     }
     private void OnEnable()
     {
-        StoneInteraction.OnProduceDiamond += ProduceDiamond;
+        StoneAreaInteraction.OnProduceDiamond += ProduceDiamond;
     }
 
     private void OnDisable()
     {
-        StoneInteraction.OnProduceDiamond -= ProduceDiamond;
+        StoneAreaInteraction.OnProduceDiamond -= ProduceDiamond;
     }
 
 

@@ -8,19 +8,20 @@ public class PlayerAnimation : MonoBehaviour
     private Animator anim;
     private static string movementAnimName = "Speed";
     private static string breakingObjectAnimName = "Breaking";
-
     private void Awake()
     {
         anim = GetComponent<Animator>();
     }
     private void OnEnable()
     {
-        StoneInteraction.OnPlayerBreakObjectAnim += ObjectBreakAnimation;
+        
+        StoneAreaInteraction.OnChangeStateOfDiggingAnimation += DiggingAnimation;
         PlayerInput.OnPlayerInput += MovementAnimation;
     }
     private void OnDisable()
     {
-        StoneInteraction.OnPlayerBreakObjectAnim -= ObjectBreakAnimation;
+       
+        StoneAreaInteraction.OnChangeStateOfDiggingAnimation -= DiggingAnimation;
         PlayerInput.OnPlayerInput -= MovementAnimation;
     }
     private void MovementAnimation(Vector3 movementVector)
@@ -31,17 +32,19 @@ public class PlayerAnimation : MonoBehaviour
         }
         else
         {
+           
             anim.SetFloat(movementAnimName, 0.0f);
         }
 
     }
-    public void ScoreTextEvent()
+    public void OnDurabilityDecreaseEvent()
     {
-        Debug.Log("DONE!");
+       // PARTICLE EFFECT
     }
-    private void ObjectBreakAnimation(bool state)
+    private void DiggingAnimation(bool state)
     {
         anim.SetBool(breakingObjectAnimName, state);
+       
     }
     
 }

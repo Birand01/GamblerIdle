@@ -637,3 +637,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb7b0d81414d6724fa971f03578cebd2, type: 3}
+--- !u!1 &8605382621474276344 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7957796827298215147, guid: eb7b0d81414d6724fa971f03578cebd2, type: 3}
+  m_PrefabInstance: {fileID: 1802482101948020499}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1984955636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605382621474276344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e23bd43ec99415429234e2cc327a6cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  finalColor: {r: 0, g: 0, b: 0, a: 0}
+  initialColor: {r: 0, g: 0, b: 0, a: 0}
+  takenDamage: 0
+  totalHammerDurability: 100
