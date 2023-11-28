@@ -11,14 +11,22 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
    
+
     internal void CharacterMovement(Vector3 movementVector)
     {
         _rigidbody.MovePosition(transform.position + movementVector * Time.deltaTime * moveSpeed);
     }
 
-    private void StopPlayer()
+    private void StopPlayer(bool state)
     {
-        _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+        if (state)
+        {
+            _rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+            _rigidbody.velocity = Vector3.zero;
+        }
+        else
+            return;
+      
     }
     public void CharacterAngularMovement(Vector3 moveVector)
     {

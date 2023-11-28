@@ -14,15 +14,16 @@ public class PlayerAnimation : MonoBehaviour
     }
     private void OnEnable()
     {
-        
-        StoneAreaInteraction.OnChangeStateOfDiggingAnimation += DiggingAnimation;
+        StoneAreaInteraction.OnStoneAreaInteractionExit += DiggingAnimation;
+        HammerDurability.OnChangeStateOfDiggingAnimation += DiggingAnimation;
         PlayerInput.OnPlayerInput += MovementAnimation;
     }
     private void OnDisable()
     {
-       
-        StoneAreaInteraction.OnChangeStateOfDiggingAnimation -= DiggingAnimation;
+        HammerDurability.OnChangeStateOfDiggingAnimation -= DiggingAnimation;
         PlayerInput.OnPlayerInput -= MovementAnimation;
+        StoneAreaInteraction.OnStoneAreaInteractionExit -= DiggingAnimation;
+
     }
     private void MovementAnimation(Vector3 movementVector)
     {
@@ -37,6 +38,7 @@ public class PlayerAnimation : MonoBehaviour
         }
 
     }
+
     public void OnDurabilityDecreaseEvent()
     {
        // PARTICLE EFFECT

@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class StoneAreaInteraction : InteractionBase
 {
-    public static event Action<bool> OnChangeStateOfDiggingAnimation;
+    public static event Action<bool> OnStoneAreaInteractionExit;
     public static event Action<int, float> OnProduceDiamond;
-    public static event Action<float> OnTakeDamageFromHammer;
+    public static event Action OnTakeDamageFromHammer;
 
-    [SerializeField] private float diamondProduceCounter, diamondProduceTime,hammerDamageCounter;
+    [SerializeField] private float diamondProduceCounter, diamondProduceTime;
     private int diamondPlaceIndex;
     private float yAxis;
     protected override void OnTriggerStayAction(Collider other)
@@ -17,25 +17,23 @@ public class StoneAreaInteraction : InteractionBase
       
         PlayerRotationEvent(other);
         HammerDamageEvent();
-       
+        DiamondProduceEvent();
 
+    }
+    protected override void OnTriggerExitAction(Collider other)
+    {
+        yAxis = 0;
+        diamondProduceCounter = 0;
+        diamondPlaceIndex = 0;
+        OnStoneAreaInteractionExit?.Invoke(false);
     }
 
     private void HammerDamageEvent()
     {
 
-        OnTakeDamageFromHammer?.Invoke(hammerDamageCounter);
-        if(hammerDamageCounter>=HammerDurability.Instance.totalHammerDurability)
-        {
-            OnChangeStateOfDiggingAnimation?.Invoke(false);
-
-        }
-        else
-        {
-            hammerDamageCounter += Time.deltaTime;
-            DiamondProduceEvent();
-            OnChangeStateOfDiggingAnimation?.Invoke(true);
-        }
+        OnTakeDamageFromHammer?.Invoke();
+       
+      
 
     }
 
@@ -47,29 +45,27 @@ public class StoneAreaInteraction : InteractionBase
     }
     private void DiamondProduceEvent()
     {
-        diamondProduceCounter += Time.deltaTime;
-        if (diamondProduceCounter >= diamondProduceTime)
+        if(HammerDurability.Instance.takenDamage<HammerDurability.Instance.totalHammerDurability)
         {
-
-            OnProduceDiamond?.Invoke(diamondPlaceIndex, yAxis);
-            diamondPlaceIndex++;
-            if (diamondPlaceIndex >= 4)
+            diamondProduceCounter += Time.deltaTime;
+            if (diamondProduceCounter >= diamondProduceTime)
             {
-                diamondPlaceIndex = 0;
-                //    yAxis += 0.6f;
+
+                OnProduceDiamond?.Invoke(diamondPlaceIndex, yAxis);
+                diamondPlaceIndex++;
+                if (diamondPlaceIndex >= 7)
+                {
+                    diamondPlaceIndex = 0;
+                    //    yAxis += 0.6f;
+                }
+
+                diamondProduceCounter = 0;
             }
-
-            diamondProduceCounter = 0;
         }
+       
     }
 
 
 
-    protected override void OnTriggerExitAction(Collider other)
-    {
-        yAxis= 0; 
-        diamondProduceCounter = 0;
-        diamondPlaceIndex = 0;   
-        OnChangeStateOfDiggingAnimation?.Invoke(false);
-    }
+    
 }
