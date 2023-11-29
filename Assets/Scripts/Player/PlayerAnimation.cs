@@ -41,7 +41,6 @@ public class PlayerAnimation : MonoBehaviour
 
     public void OnDurabilityDecreaseEvent()
     {
-       // PARTICLE EFFECT
     }
     private void DiggingAnimation(bool state)
     {

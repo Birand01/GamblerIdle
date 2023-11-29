@@ -2,12 +2,15 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class StoneAreaInteraction : InteractionBase
 {
     public static event Action<bool> OnStoneAreaInteractionExit;
     public static event Action<int, float> OnProduceDiamond;
     public static event Action OnTakeDamageFromHammer;
+
+    [Inject] HammerDurability hammerDurability;  
 
     [SerializeField] private float diamondProduceCounter, diamondProduceTime;
     private int diamondPlaceIndex;
@@ -45,7 +48,7 @@ public class StoneAreaInteraction : InteractionBase
     }
     private void DiamondProduceEvent()
     {
-        if(HammerDurability.Instance.takenDamage<HammerDurability.Instance.totalHammerDurability)
+        if(hammerDurability.takenDamage<hammerDurability.totalHammerDurability)
         {
             diamondProduceCounter += Time.deltaTime;
             if (diamondProduceCounter >= diamondProduceTime)

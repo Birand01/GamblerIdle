@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Hammer\HammerDurability.cs" />
     <Compile Include="Assets\Art\AurynSky\Gems Ultimate Pack\Scripts\AnimationScript.cs" />
     <Compile Include="Assets\Scripts\Base\DependencyInjector.cs" />
+    <Compile Include="Assets\Scripts\Hammer\HammerDurabilityUI.cs" />
     <Compile Include="Assets\Scripts\Interactions\Mechanic\HammerStoreInteraction.cs" />
     <Compile Include="Assets\Scripts\Base\HammerStoreButton.cs" />
     <Compile Include="Assets\Scripts\Player\AnimationEvents.cs" />
@@ -75,13 +76,13 @@
     <Compile Include="Assets\Scripts\UI\Canvas\CanvasController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimation.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Examples\JoystickSetterExample.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\HammerStore\IncreaseHammerDurabilityButton.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\HammerStore\DecreaseHammerDamageButton.cs" />
     <Compile Include="Assets\Scripts\Interactions\Diamond\DiamondInteraction.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\UI\Buttons\HammerStore\DecreaseHammerDamageButton.cs" />
-    <Compile Include="Assets\Scripts\Hammer\HammerDurabilityUI.cs" />
-    <Compile Include="Assets\Scripts\UI\Buttons\HammerStore\IncreaseHammerDurabilityButton.cs" />
+    <Compile Include="Assets\Scripts\Managers\Money\MoneyManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

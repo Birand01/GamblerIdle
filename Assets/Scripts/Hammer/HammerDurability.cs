@@ -7,7 +7,7 @@ using UnityEngine;
 public class HammerDurability : MonoBehaviour
 {
     public static event Action<bool> OnChangeStateOfDiggingAnimation;
-
+   
 
     [SerializeField] private Color finalColor;
     private Color initialColor;
@@ -15,7 +15,7 @@ public class HammerDurability : MonoBehaviour
     private MeshRenderer meshRenderer;
    
 
-    public static HammerDurability Instance { get;private set; }
+   
     private void OnEnable()
     {
         HammerDurabilityUI.OnUpdateHammerCurrentDuration += UpdateHammerColor;
@@ -30,9 +30,6 @@ public class HammerDurability : MonoBehaviour
     }
     private void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-
         meshRenderer = GetComponent<MeshRenderer>();
         initialColor=meshRenderer.material.color;
         finalColor = Color.red;
@@ -52,7 +49,8 @@ public class HammerDurability : MonoBehaviour
         }
         else
         {
-            takenDamage += Time.deltaTime;
+         
+            takenDamage += Time.deltaTime/3f;
             OnChangeStateOfDiggingAnimation?.Invoke(true);
         }
     }

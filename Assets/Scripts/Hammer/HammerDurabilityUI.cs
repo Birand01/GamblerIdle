@@ -6,6 +6,7 @@ using UniRx;
 using UniRx.Triggers;
 using DG.Tweening.Core.Easing;
 using System;
+using Zenject;
 
 public class HammerDurabilityUI : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class HammerDurabilityUI : MonoBehaviour
     private CompositeDisposable subscriptions = new CompositeDisposable();
 
     [SerializeField] private TMP_Text currentDamageText, totalDurabilityText;
-
+    [Inject] HammerDurability hammerDurability;
    
 
     private void OnEnable()
@@ -48,23 +49,23 @@ public class HammerDurabilityUI : MonoBehaviour
 
     private void SetHammerDurability()
     {
-        currentDamageText.text = String.Format("{0:0.0}",HammerDurability.Instance.takenDamage);
-        totalDurabilityText.text = String.Format("{0:0}", HammerDurability.Instance.totalHammerDurability);
-        OnUpdateHammerCurrentDuration?.Invoke(HammerDurability.Instance.takenDamage, HammerDurability.Instance.totalHammerDurability);
+        currentDamageText.text = String.Format("{0:0.0}", hammerDurability.takenDamage);
+        totalDurabilityText.text = String.Format("{0:0}", hammerDurability.totalHammerDurability);
+        OnUpdateHammerCurrentDuration?.Invoke(hammerDurability.takenDamage, hammerDurability.totalHammerDurability);
     }
 
     private void DecreaseHammerDamage(float healAmount)
     {
-        float currentDamageAmount = HammerDurability.Instance.takenDamage;
+        float currentDamageAmount = hammerDurability.takenDamage;
         currentDamageAmount -= healAmount;
-        currentDamageAmount=Mathf.Clamp(currentDamageAmount, 0f, HammerDurability.Instance.totalHammerDurability);
+        currentDamageAmount=Mathf.Clamp(currentDamageAmount, 0f, hammerDurability.totalHammerDurability);
         currentDamageText.text = String.Format("{0:0.0}", currentDamageAmount);
     }
 
     private void IncreaseHammerDurability(float amount)
     {
-        HammerDurability.Instance.totalHammerDurability += amount;
-        totalDurabilityText.text = String.Format("{0:0}", HammerDurability.Instance.totalHammerDurability);
+        hammerDurability.totalHammerDurability += amount;
+        totalDurabilityText.text = String.Format("{0:0}", hammerDurability.totalHammerDurability);
     }
 
    

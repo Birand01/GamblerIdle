@@ -8,8 +8,9 @@ public class DependencyInjector : MonoInstaller
     
     public override void InstallBindings()
     {
-       Container.Bind<PlayerMovement>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.Bind<PlayerMovement>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<DynamicJoystick>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.Bind<HammerDurability>().FromComponentInHierarchy().AsSingle().NonLazy();
        
     }
 }
