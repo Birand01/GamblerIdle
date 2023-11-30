@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class IncreaseHammerDurabilityButton : HammerStoreButton
 {
-    public static event Action<float> OnDecreaseMoneyAmount;
 
     public static event Action<float> OnIncreaseHammerDurability;
     protected override void OnButtonClickEvent()
     {
-        OnDecreaseMoneyAmount?.Invoke(int.Parse(priceText.text));
+        base.OnButtonClickEvent();
         Debug.Log(this.gameObject.name);
         OnIncreaseHammerDurability?.Invoke(int.Parse(amountText.text));
     }

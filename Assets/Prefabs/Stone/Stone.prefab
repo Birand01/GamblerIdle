@@ -401,8 +401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diamondProduceCounter: 0
-  diamondProduceTime: 4
-  hammerDamageCounter: 0
+  diamondProduceTime: 1
 --- !u!1 &5027488715139332001
 GameObject:
   m_ObjectHideFlags: 0

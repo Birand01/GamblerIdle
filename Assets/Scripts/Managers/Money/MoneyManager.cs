@@ -17,11 +17,13 @@ public class MoneyManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        IncreaseHammerDurabilityButton.OnDecreaseMoneyAmount += DecreaseMoneyAmount;
+        DiamondManager.OnExchangeDiamondToMoney += IncreaseMoneyAmount;
+        HammerStoreButton.OnDecreaseMoneyAmount += DecreaseMoneyAmount;
     }
     private void OnDisable()
     {
-        IncreaseHammerDurabilityButton.OnDecreaseMoneyAmount -= DecreaseMoneyAmount;
+        HammerStoreButton.OnDecreaseMoneyAmount -= DecreaseMoneyAmount;
+        DiamondManager.OnExchangeDiamondToMoney -= IncreaseMoneyAmount;
 
     }
     private void DecreaseMoneyAmount(float amount)
@@ -29,5 +31,12 @@ public class MoneyManager : MonoBehaviour
         totalMoneyAmount-=amount;
         totalMoneyAmount=Mathf.Clamp(totalMoneyAmount, 0, float.MaxValue);
         moneyCounterText.text = totalMoneyAmount.ToString();
+    }
+
+    private void IncreaseMoneyAmount(int amount)
+    {
+        totalMoneyAmount+=amount;
+        moneyCounterText.text = totalMoneyAmount.ToString();
+
     }
 }
