@@ -9,13 +9,13 @@ using UniRx;
 using UniRx.Triggers;
 public abstract class HammerStoreButton : MonoBehaviour
 {
+    [SerializeField] private StoreButtonSO storeButtonSO;
     private CompositeDisposable subscriptions = new CompositeDisposable();
     public static event Action<float> OnDecreaseMoneyAmount;
-    public static event Action<float> OnIncreasePriceValue;
-    public static event Action<float> OnIncreaseSkillValue;
+   
 
     [SerializeField] protected TMP_Text priceText, amountText;
-    [SerializeField] protected float initialPriceAmount,initialSkillAmount,constantMultiplier;
+   
     protected Button button;
     protected virtual void Awake()
     {
@@ -38,8 +38,8 @@ public abstract class HammerStoreButton : MonoBehaviour
     }
     private void IncreaseButtonValues()
     {
-        initialSkillAmount += constantMultiplier;
-        initialPriceAmount += constantMultiplier;
+        storeButtonSO.skillAmount += storeButtonSO.multiplier;
+        storeButtonSO.price += storeButtonSO.multiplier;
         InitializeButtonValues();
 
     }
@@ -51,8 +51,8 @@ public abstract class HammerStoreButton : MonoBehaviour
 
     private void InitializeButtonValues()
     {
-        priceText.text=initialPriceAmount.ToString();
-        amountText.text=initialSkillAmount.ToString();
+        priceText.text= storeButtonSO.price.ToString();
+        amountText.text= storeButtonSO.skillAmount.ToString();
     }
 
     protected virtual IEnumerator Subscribe()

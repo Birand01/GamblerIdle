@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DecreaseHammerDamageButton : HammerStoreButton
 {
+
     public static event Action<float> OnDecreaseHammerDamage;
     protected override void OnButtonClickEvent()
     {

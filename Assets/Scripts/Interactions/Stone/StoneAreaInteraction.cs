@@ -59,7 +59,7 @@ public class StoneAreaInteraction : InteractionBase
                 if (diamondPlaceIndex >= 7)
                 {
                     diamondPlaceIndex = 0;
-                    //    yAxis += 0.6f;
+                    yAxis += 0.6f;
                 }
 
                 diamondProduceCounter = 0;

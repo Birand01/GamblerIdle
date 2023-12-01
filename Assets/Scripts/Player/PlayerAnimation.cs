@@ -6,14 +6,16 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     private Animator anim;
+    public AnimationClip clip;
     private static string movementAnimName = "Speed";
-    private static string breakingObjectAnimName = "Breaking";
+    private static string diggingAnimName = "Digging";
     private void Awake()
     {
         anim = GetComponent<Animator>();
     }
     private void OnEnable()
     {
+        IncreaseDiggingRateButton.OnIncreaseDiggingRate += IncreaseDiggingAnimationSpeed;
         StoneAreaInteraction.OnStoneAreaInteractionExit += DiggingAnimation;
         HammerDurability.OnChangeStateOfDiggingAnimation += DiggingAnimation;
         PlayerInput.OnPlayerInput += MovementAnimation;
@@ -23,6 +25,7 @@ public class PlayerAnimation : MonoBehaviour
         HammerDurability.OnChangeStateOfDiggingAnimation -= DiggingAnimation;
         PlayerInput.OnPlayerInput -= MovementAnimation;
         StoneAreaInteraction.OnStoneAreaInteractionExit -= DiggingAnimation;
+        IncreaseDiggingRateButton.OnIncreaseDiggingRate -= IncreaseDiggingAnimationSpeed;
 
     }
     private void MovementAnimation(Vector3 movementVector)
@@ -39,12 +42,19 @@ public class PlayerAnimation : MonoBehaviour
 
     }
 
+    private void IncreaseDiggingAnimationSpeed()
+    {
+        //anim.speed += 2f;
+      
+    }
+
     public void OnDurabilityDecreaseEvent()
     {
+        
     }
     private void DiggingAnimation(bool state)
     {
-        anim.SetBool(breakingObjectAnimName, state);
+        anim.SetBool(diggingAnimName, state);
        
     }
     

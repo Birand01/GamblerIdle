@@ -794,11 +794,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b419731ad1b924aa1ab3fcd2d23161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storeButtonSO: {fileID: 11400000, guid: 3e6d7e0ada87faf4996ad1ee2735d95a, type: 2}
   priceText: {fileID: 355252420}
   amountText: {fileID: 1016779728}
-  initialPriceAmount: 10
-  initialSkillAmount: 3
-  constantMultiplier: 5
 --- !u!1 &490822883
 GameObject:
   m_ObjectHideFlags: 0
@@ -2376,7 +2374,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a2f93ca782289dd4ea8b43544a2dd720, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 777e7f4ab8517ef479cc6df2d091d95b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3015,11 +3013,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5133a7a40b9946240bbe3304a01bae12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  storeButtonSO: {fileID: 11400000, guid: 57edb20135927b141b010c8539dad72d, type: 2}
   priceText: {fileID: 1405227245}
   amountText: {fileID: 2035060563}
-  initialPriceAmount: 100
-  initialSkillAmount: 10
-  constantMultiplier: 3
 --- !u!1 &1591207994
 GameObject:
   m_ObjectHideFlags: 0
@@ -3106,7 +3102,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -8.1493, y: 5.6493}
+  m_AnchoredPosition: {x: -14.2, y: 5.6493}
   m_SizeDelta: {x: 106.9432, y: 90.2653}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1608606122
@@ -3764,7 +3760,7 @@ GameObject:
   - component: {fileID: 1795211720}
   - component: {fileID: 1795211719}
   - component: {fileID: 1795211718}
-  - component: {fileID: 1795211717}
+  - component: {fileID: 1795211721}
   m_Layer: 5
   m_Name: IncreaseDiggingRateButton
   m_TagString: Untagged
@@ -3795,23 +3791,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1795211717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1795211715}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6b419731ad1b924aa1ab3fcd2d23161, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  priceText: {fileID: 783579816}
-  amountText: {fileID: 1608606122}
-  initialPriceAmount: 10
-  initialSkillAmount: 3
-  constantMultiplier: 5
 --- !u!114 &1795211718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3894,6 +3873,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1795211715}
   m_CullTransparentMesh: 1
+--- !u!114 &1795211721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795211715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d616a82d760e5c44881e375c1420f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storeButtonSO: {fileID: 11400000, guid: e640d8074d6d86547b553d8044bb3005, type: 2}
+  priceText: {fileID: 783579816}
+  amountText: {fileID: 1608606122}
 --- !u!4 &1811525836 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2200301535845875143, guid: 5c7544cee6161b74f97b052adf80232b, type: 3}
@@ -4639,6 +4633,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1802482101503699537, guid: 5c7544cee6161b74f97b052adf80232b, type: 3}
+      propertyPath: clip
+      value: 
+      objectReference: {fileID: 7400000, guid: 2d8a809e21a5239429a5309defb56914, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c7544cee6161b74f97b052adf80232b, type: 3}
 --- !u!1001 &4971228313366817969
