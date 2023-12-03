@@ -7,11 +7,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 using UniRx.Triggers;
+using Zenject;
+
 public abstract class HammerStoreButton : MonoBehaviour
 {
+    [Inject] private MoneyManager moneyManager;
     [SerializeField] private StoreButtonSO storeButtonSO;
     private CompositeDisposable subscriptions = new CompositeDisposable();
-    public static event Action<float> OnDecreaseMoneyAmount;
+    public static event Action<int> OnDecreaseMoneyAmount;
    
 
     [SerializeField] protected TMP_Text priceText, amountText;
@@ -61,7 +64,7 @@ public abstract class HammerStoreButton : MonoBehaviour
 
         this.UpdateAsObservable().Subscribe(x =>
         {
-            if ((float.Parse(priceText.text) <= MoneyManager.Instance.totalMoneyAmount))
+            if ((float.Parse(priceText.text) <= moneyManager.totalMoneyAmount))
             {
                 IsButtonInteractable(true);
             }

@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\UI\Canvas\CanvasManager.cs" />
     <Compile Include="Assets\Scripts\Managers\InstantiationManager\DiamondInstantiator.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\HammerStore\IncreaseDiggingRateButton.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Base\InteractionBase.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
@@ -67,26 +68,33 @@
     <Compile Include="Assets\Art\AurynSky\Gems Ultimate Pack\Scripts\AnimationScript.cs" />
     <Compile Include="Assets\Scripts\Base\DependencyInjector.cs" />
     <Compile Include="Assets\Scripts\Hammer\HammerDurabilityUI.cs" />
+    <Compile Include="Assets\Scripts\GambleAreas\Wheel\WheelRotator.cs" />
     <Compile Include="Assets\Scripts\Interactions\Mechanic\HammerStoreInteraction.cs" />
     <Compile Include="Assets\Scripts\Base\HammerStoreButton.cs" />
     <Compile Include="Assets\Scripts\Player\AnimationEvents.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Examples\JoystickPlayerExample.cs" />
     <Compile Include="Assets\Scripts\Player\DiamondManager.cs" />
+    <Compile Include="Assets\Scripts\Base\UnlockBuildingBase.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Scripts\Base\Joystick.cs" />
     <Compile Include="Assets\Scripts\Managers\Money\MoneyManager.cs" />
     <Compile Include="Assets\Scripts\UI\Canvas\CanvasController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimation.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Examples\JoystickSetterExample.cs" />
+    <Compile Include="Assets\Scripts\SO\StoreButtonSO\StoreButtonSO.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\HammerStore\IncreaseHammerDurabilityButton.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\HammerStore\DecreaseHammerDamageButton.cs" />
     <Compile Include="Assets\Scripts\Interactions\DiamondExchangeArea\ExchangeArea.cs" />
     <Compile Include="Assets\Scripts\Interactions\Diamond\DiamondInteraction.cs" />
+    <Compile Include="Assets\Scripts\Interactions\GamblingAreas\UnlockGamblingArea.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\SO\StoreButtonSO\StoreButtonSO.cs" />
-    <Compile Include="Assets\Scripts\UI\Buttons\HammerStore\IncreaseDiggingRateButton.cs" />
+    <Compile Include="Assets\Scripts\Interactions\UnlockGambleArea\UnlockGamblingAreaInteraction.cs" />
+    <Compile Include="Assets\Scripts\Interactions\UnlockGambleArea\Dice\DiceGameInteraction.cs" />
+    <Compile Include="Assets\Scripts\GambleAreas\Dice\DiceRotator.cs" />
+    <Compile Include="Assets\Scripts\Base\RotatorBase.cs" />
+    <Compile Include="Assets\Scripts\Interactions\UnlockGambleArea\Wheel\WheelGameInteraction.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -111,6 +119,7 @@
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\Dice_6\Documentation\Readmy.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
