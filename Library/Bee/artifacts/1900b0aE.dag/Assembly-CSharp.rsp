@@ -398,8 +398,10 @@
 "Assets/Scripts/UI/Buttons/HammerStore/DecreaseHammerDamageButton.cs"
 "Assets/Scripts/UI/Buttons/HammerStore/IncreaseDiggingRateButton.cs"
 "Assets/Scripts/UI/Buttons/HammerStore/IncreaseHammerDurabilityButton.cs"
+"Assets/Scripts/UI/Buttons/Wheel/SpinButton.cs"
 "Assets/Scripts/UI/Canvas/CanvasController.cs"
 "Assets/Scripts/UI/Canvas/CanvasManager.cs"
+"Assets/Scripts/UI/Gambles/Wheel/Wheel.cs"
 -langversion:9.0
 
 /deterministic

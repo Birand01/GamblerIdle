@@ -6,7 +6,8 @@ using UnityEngine;
 public enum CanvasType
 {
     HammerStoreUI,
-    GameUI
+    GameUI,
+    WheelGambleUI
 }
 public class CanvasManager : MonoBehaviour
 {
@@ -20,11 +21,13 @@ public class CanvasManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        HammerStoreInteraction.OnShowHammerStoreUI += SwitchCanvas;
+        WheelGameInteraction.OnSwitchWheelGambleUI += SwitchCanvas;
+        HammerStoreInteraction.OnSwitchHammerStoreUI += SwitchCanvas;
     }
     private void OnDisable()
     {
-        HammerStoreInteraction.OnShowHammerStoreUI -= SwitchCanvas;
+        HammerStoreInteraction.OnSwitchHammerStoreUI -= SwitchCanvas;
+        WheelGameInteraction.OnSwitchWheelGambleUI -= SwitchCanvas;
 
     }
     private void SwitchCanvas(CanvasType canvasType)
