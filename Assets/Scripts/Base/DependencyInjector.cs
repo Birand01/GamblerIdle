@@ -12,6 +12,6 @@ public class DependencyInjector : MonoInstaller
         Container.Bind<DynamicJoystick>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<HammerDurability>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<MoneyManager>().FromComponentInHierarchy().AsSingle().NonLazy();
-       
+        Container.Bind<BetAmount>().FromComponentInHierarchy().AsSingle().NonLazy();
     }
 }

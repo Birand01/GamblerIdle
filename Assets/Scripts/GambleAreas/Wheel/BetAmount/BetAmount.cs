@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+
 public class BetAmount : MonoBehaviour
 {
     private TMP_Text betValueText;
     private int initialBetValue = 100,maxBetValue=500;
-    private int currentBetValue;
+    internal int currentBetValue;
     private void Awake()
     {
         betValueText = GetComponent<TMP_Text>();
