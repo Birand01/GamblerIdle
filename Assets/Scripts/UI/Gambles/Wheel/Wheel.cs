@@ -7,14 +7,7 @@ public class Wheel : MonoBehaviour
 {
     [SerializeField] private float rotationAmount,rotationDuration;
     [SerializeField] private Transform wheel;
-    private void OnEnable()
-    {
-        SpinButton.OnSpinWheel += SpinWheel;
-    }
-    private void OnDisable()
-    {
-        SpinButton.OnSpinWheel -= SpinWheel;
-    }
+   
     private void SpinWheel()
     {
         float randomAngle = Random.Range(0, 360);

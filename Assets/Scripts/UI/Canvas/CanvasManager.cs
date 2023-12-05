@@ -21,6 +21,7 @@ public class CanvasManager : MonoBehaviour
     }
     private void OnEnable()
     {
+        ExitWheelGameButton.OnExitWheelGame += SwitchCanvas;
         WheelGameInteraction.OnSwitchWheelGambleUI += SwitchCanvas;
         HammerStoreInteraction.OnSwitchHammerStoreUI += SwitchCanvas;
     }
@@ -28,6 +29,7 @@ public class CanvasManager : MonoBehaviour
     {
         HammerStoreInteraction.OnSwitchHammerStoreUI -= SwitchCanvas;
         WheelGameInteraction.OnSwitchWheelGambleUI -= SwitchCanvas;
+        ExitWheelGameButton.OnExitWheelGame -= SwitchCanvas;
 
     }
     private void SwitchCanvas(CanvasType canvasType)
