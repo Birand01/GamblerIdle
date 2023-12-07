@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Hammer\HammerDurability.cs" />
     <Compile Include="Assets\Art\AurynSky\Gems Ultimate Pack\Scripts\AnimationScript.cs" />
     <Compile Include="Assets\Scripts\Interactions\UnlockGambleArea\UnlockGamblingAreaInteraction.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\Wheel\SpinButton\SpinButton.cs" />
     <Compile Include="Assets\Scripts\Base\DependencyInjector.cs" />
     <Compile Include="Assets\Scripts\Interactions\UnlockGambleArea\Dice\DiceGameInteraction.cs" />
     <Compile Include="Assets\Scripts\Hammer\HammerDurabilityUI.cs" />
@@ -101,7 +102,6 @@
     <Compile Include="Assets\Scripts\UI\Buttons\Wheel\BetButtons\IncreaseBet.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\Wheel\BetButtons\Base\BetOptionBase.cs" />
     <Compile Include="Assets\Scripts\Base\RotatorBase.cs" />
-    <Compile Include="Assets\Scripts\UI\Buttons\Wheel\SpinButton\SpinButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
