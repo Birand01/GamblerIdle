@@ -7,7 +7,7 @@ using UnityEngine;
 public class BetAmount : MonoBehaviour
 {
     private TMP_Text betValueText;
-    private int initialBetValue = 100,maxBetValue=500;
+    internal int initialBetValue = 100,maxBetValue=500;
     internal int currentBetValue;
     private void Awake()
     {
