@@ -13,5 +13,6 @@ public class DependencyInjector : MonoInstaller
         Container.Bind<HammerDurability>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<MoneyManager>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<BetAmount>().FromComponentInHierarchy().AsSingle().NonLazy();
+        Container.Bind<Wheel>().FromComponentInHierarchy().AsSingle().NonLazy();
     }
 }
