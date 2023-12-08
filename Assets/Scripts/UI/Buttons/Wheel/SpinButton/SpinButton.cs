@@ -16,6 +16,7 @@ public class SpinButton : MonoBehaviour
     private Button button;
 
     public static event Action<Button> OnSpinWheel;
+    public static event Action<int> OnUpdateTotalMoneyAmount;
     private void Awake()
     {
         button = GetComponent<Button>();
@@ -39,6 +40,7 @@ public class SpinButton : MonoBehaviour
     {
         Debug.Log("SPIN BUTTON IS CLICKED");
         OnSpinWheel?.Invoke(button);
+        OnUpdateTotalMoneyAmount?.Invoke(betAmount.currentBetValue);
     }
 
     protected virtual IEnumerator Subscribe()
@@ -49,6 +51,7 @@ public class SpinButton : MonoBehaviour
         {
             if ((betAmount.currentBetValue) <= moneyManager.totalMoneyAmount && wheel.isSpinButtonEnable)
             {
+                
                 IsButtonInteractable(true);
             }
             else

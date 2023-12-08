@@ -4283,7 +4283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyCounterText: {fileID: 1949818470}
-  totalMoneyAmount: 4000
+  totalMoneyAmount: 1250
   wheelGameMoney: {fileID: 840430098}
 --- !u!1 &1092714428
 GameObject:
@@ -4408,6 +4408,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1126505618}
+  - component: {fileID: 1126505619}
   m_Layer: 5
   m_Name: RewardAmounts
   m_TagString: Untagged
@@ -4447,6 +4448,32 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1126505619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126505617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22c541d8e1a344346ab11043dd98ea73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wheelSectorsSO:
+  - {fileID: 11400000, guid: e0d75a41a2586fe42b80fee3f9420af9, type: 2}
+  - {fileID: 11400000, guid: 8f0de0c70c1bb124ab2f854d44aea1e8, type: 2}
+  - {fileID: 11400000, guid: 29c790238baf01c48930fdcca97db315, type: 2}
+  - {fileID: 11400000, guid: ddc28432437317747b1e9a41b836fddc, type: 2}
+  - {fileID: 11400000, guid: fec72a88350f91745acd86a07cabcb55, type: 2}
+  - {fileID: 11400000, guid: cb4c69f6be5f0fb42a1177692e4ba1a8, type: 2}
+  - {fileID: 11400000, guid: 2ecf3ccb666f7fc4380d7e233f30c73a, type: 2}
+  - {fileID: 11400000, guid: 4df2db0e9dc37e54c932e878dd6723c7, type: 2}
+  - {fileID: 11400000, guid: b74b4c5062c535e4588672f6a93715e3, type: 2}
+  - {fileID: 11400000, guid: af2b6c00f3e048b479cbd51ca440d80f, type: 2}
+  - {fileID: 11400000, guid: aa289d8fb3405dc48840ba34981f519d, type: 2}
+  - {fileID: 11400000, guid: d2b21cd82a7586e418af5fc8370a43ee, type: 2}
+  rewards: []
 --- !u!1 &1180844431
 GameObject:
   m_ObjectHideFlags: 0
