@@ -395,6 +395,7 @@
 "Assets/Scripts/Player/PlayerController.cs"
 "Assets/Scripts/Player/PlayerInput.cs"
 "Assets/Scripts/Player/PlayerMovement.cs"
+"Assets/Scripts/Sectors/SectorConfiguration.cs"
 "Assets/Scripts/SO/StoreButtonSO/StoreButtonSO.cs"
 "Assets/Scripts/SO/WheelSectors/WheelSectorsSO.cs"
 "Assets/Scripts/UI/Buttons/HammerStore/DecreaseHammerDamageButton.cs"

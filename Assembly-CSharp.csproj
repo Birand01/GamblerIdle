@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\Managers\InstantiationManager\DiamondInstantiator.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\HammerStore\IncreaseDiggingRateButton.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\Wheel\BetButtons\ExitWheelGameButton.cs" />
+    <Compile Include="Assets\Scripts\SO\WheelSectors\WheelSectorsSO.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Interactions\UnlockGambleArea\Wheel\WheelGameInteraction.cs" />
     <Compile Include="Assets\Scripts\Base\InteractionBase.cs" />
@@ -96,14 +97,14 @@
     <Compile Include="Assets\Scripts\Interactions\DiamondExchangeArea\ExchangeArea.cs" />
     <Compile Include="Assets\Scripts\Interactions\Diamond\DiamondInteraction.cs" />
     <Compile Include="Assets\Scripts\Interactions\GamblingAreas\UnlockGamblingArea.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\Wheel\RewardSectors\Rewards.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
     <Compile Include="Assets\Scripts\UI\Gambles\Wheel\Wheel.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\Wheel\BetButtons\IncreaseBet.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\Wheel\BetButtons\Base\BetOptionBase.cs" />
     <Compile Include="Assets\Scripts\Base\RotatorBase.cs" />
-    <Compile Include="Assets\Scripts\UI\Buttons\Wheel\RewardSectors\Rewards.cs" />
-    <Compile Include="Assets\Scripts\SO\WheelSectors\WheelSectorsSO.cs" />
+    <Compile Include="Assets\Scripts\Sectors\SectorConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

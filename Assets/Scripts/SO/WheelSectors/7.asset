@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e726b1e11f7264d99ad0e37c65ad91, type: 3}
   m_Name: 7
   m_EditorClassIdentifier: 
-  RewardValue: 857
+  RewardValue: 75
   Probability: 0

@@ -1,52 +1,44 @@
 using ModestTree;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Rewards : MonoBehaviour
 {
-    [SerializeField] private WheelSectorsSO[] wheelSectorsSO;
-    [SerializeField] private List<GameObject> rewards = new List<GameObject>();
+    [SerializeField] internal List<GameObject> sectors;
     private void OnEnable()
     {
-        SetUpSectorValue();
-        BetOptionBase.OnChangeBetAmount += UpdateSectorValues;
+       
+        //BetOptionBase.OnChangeBetAmount += UpdateSectorValues;
     }
     private void OnDisable()
     {
-        BetOptionBase.OnChangeBetAmount -= UpdateSectorValues;
+       // BetOptionBase.OnChangeBetAmount -= UpdateSectorValues;
 
     }
-
     private void Awake()
     {
-        for (int i = 0; i < this.transform.childCount; i++)
+        for (int i = 0; i < transform.childCount; i++)
         {
-            rewards.Add(this.transform.GetChild(i).gameObject); 
+            sectors.Add(this.transform.GetChild(i).gameObject);
         }
     }
-
-    private void SetUpSectorValue()
+   
+    internal SectorConfiguration GetSector(float angle)
     {
-        for(int i = 0;i < rewards.Count;i++)
-        {
-            rewards[i].GetComponent<TMP_Text>().text = wheelSectorsSO[i].RewardValue.ToString();
-        }
+        var anglePerSector=360/sectors.Count;
+        return sectors[(int)((angle)/anglePerSector)].gameObject.GetComponent<SectorConfiguration>();
     }
 
-    private void UpdateSectorValues(int amount)
-    {
-        for (int i = 0; i < rewards.Count; i++)
-        {
-            wheelSectorsSO[i].RewardValue += amount;
-            rewards[i].GetComponent<TMP_Text>().text = wheelSectorsSO[i].RewardValue.ToString();
-        }
-    }
 
-    internal int GetLandedSector(float angle)
-    {
-        var anglePerCategory = 360 / rewards.Count;
-        return (int)(angle/anglePerCategory);
-    }
+
+    //internal WheelSectorsSO GetLandedSectorRewardValue(float angle)
+    //{
+    //    var anglePerSector = 360 / wheelSectorsSO.Count;
+    //    WheelSectorsSO sector = wheelSectorsSO[(int)(angle / anglePerSector)];
+    //    return sector;
+    //}
 }
