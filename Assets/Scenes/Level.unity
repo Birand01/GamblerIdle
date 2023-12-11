@@ -5265,6 +5265,7 @@ GameObject:
   - component: {fileID: 114000010004488564}
   - component: {fileID: 114000015174658130}
   - component: {fileID: 95000012455215494}
+  - component: {fileID: 224000012166995907}
   m_Layer: 5
   m_Name: SpinWheelButton
   m_TagString: Untagged
@@ -5379,7 +5380,7 @@ GameObject:
   - component: {fileID: 114000012839338030}
   - component: {fileID: 1659796232}
   m_Layer: 5
-  m_Name: FortuneWheel Window
+  m_Name: FortuneWheelUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6433,7 +6434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17280642a3c064fb3bb6ad029ac7310e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FreeTurnButton: {fileID: 0}
+  FreeTurnButton: {fileID: 114000015174658130}
   Circle: {fileID: 1000014356098540}
   DeltaCoinsText: {fileID: 114000013389300210}
   CurrentCoinsText: {fileID: 114000010147293950}
@@ -6951,19 +6952,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114000010004488564}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114000013275256544}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: TurnWheelButtonClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &114000015200479394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7729,6 +7718,18 @@ RectTransform:
   m_AnchoredPosition: {x: 1, y: -1596}
   m_SizeDelta: {x: 216, y: 73}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &224000012166995907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013990020660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435574a5c01cbdc468302aab94cee3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &224000012318237196
 RectTransform:
   m_ObjectHideFlags: 0

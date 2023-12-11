@@ -51,7 +51,7 @@ public class SpinButton : MonoBehaviour
         {
             if ((betAmount.currentBetValue) <= moneyManager.totalMoneyAmount && wheel.isSpinButtonEnable)
             {
-                
+
                 IsButtonInteractable(true);
             }
             else

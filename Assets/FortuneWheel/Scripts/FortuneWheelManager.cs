@@ -4,11 +4,27 @@ using System.Collections;
 using System;
 using System.Linq;
 using UnityEngine.Events;
+using DG.Tweening;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
+/**
+ * One sector on the wheel
+ */
+[Serializable]
+public class FortuneWheelSector
+{
+    [Tooltip("Text object where value will be placed (not required)")]
+    public GameObject ValueTextObject;
 
+    [Tooltip("Value of reward")]
+    public int RewardValue = 100;
+
+    [Tooltip("Chance that this sector will be randomly selected")]
+    [RangeAttribute(0, 100)]
+    public int Probability = 100;
+
+    [Tooltip("Method that will be invoked if this sector will be randomly selected")]
+    public UnityEvent RewardCallback;
+}
 public class FortuneWheelManager : MonoBehaviour
 {
 	[Header("Game Objects for some elements")]			
@@ -32,7 +48,7 @@ public class FortuneWheelManager : MonoBehaviour
 	private int _currentCoinsAmount = 1000;		// Started coins amount. In your project it should be picked up from CoinsManager or from PlayerPrefs and so on
 	private int _previousCoinsAmount;
 
-	
+	internal bool isSpinButtonEnable = true;
 
 
 	
@@ -56,26 +72,32 @@ public class FortuneWheelManager : MonoBehaviour
 		// Show our current coins amount
 		CurrentCoinsText.text = _currentCoinsAmount.ToString ();
 
-		// Show sector reward value in text object if it's set
-		foreach (var sector in Sectors)
-		{
-			if (sector.ValueTextObject != null)
-			{
+		SetSectorsValue();
+
+
+
+    }
+	private void SetSectorsValue()
+	{
+        // Show sector reward value in text object if it's set
+        foreach (var sector in Sectors)
+        {
+            if (sector.ValueTextObject != null)
+            {
                 sector.RewardValue *= TurnCost;
                 sector.ValueTextObject.GetComponent<Text>().text = sector.RewardValue.ToString();
             }
 
         }
+    }
 
-		
-	}
-
-	private void TurnWheelForFree() { TurnWheel (true);	}
+	
 	private void TurnWheelForCoins() { TurnWheel (false); }
 
 	private void TurnWheel (bool isFree)
 	{
-		_currentLerpRotationTime = 0f;
+        isSpinButtonEnable = false;
+        _currentLerpRotationTime = 0f;
 
 		// All sectors angles
 		int[] sectorsAngles = new int[Sectors.Length];
@@ -132,26 +154,22 @@ public class FortuneWheelManager : MonoBehaviour
 		} 
 	}
 
-	public void TurnWheelButtonClick ()
+	private void OnSpinButtonEvent ()
 	{
-		if (_isFreeTurnAvailable) {
-			TurnWheelForFree ();
-		} else {
-			// If we have enabled paid turns
+		
 			if (IsPaidTurnEnabled) {
 				// If player have enough coins
 				if (_currentCoinsAmount >= TurnCost) {
 					TurnWheelForCoins ();
 				}
 			}
-		}
+		
 	}
+   
 
 
 
-	
-
-	private void Update ()
+    private void Update ()
 	{
 		
 
@@ -226,21 +244,7 @@ public class FortuneWheelManager : MonoBehaviour
 
 	
 
-	private void EnableButton (Button button)
-	{
-		button.interactable = true;
-		button.GetComponent<Image> ().color = new Color(255, 255, 255, 1f);
-	}
 
-	private void DisableButton (Button button)
-	{
-		button.interactable = false;
-		button.GetComponent<Image> ().color = new Color(255, 255, 255, 0.5f);
-	}
-
-	// Function for more readable calls
-	private void EnableFreeTurnButton () { EnableButton (FreeTurnButton); }
-	private void DisableFreeTurnButton () {	DisableButton (FreeTurnButton);	}
 	
 
 	
@@ -248,23 +252,5 @@ public class FortuneWheelManager : MonoBehaviour
 
 }
 
-/**
- * One sector on the wheel
- */
-[Serializable]
-public class FortuneWheelSector : System.Object
-{
-	[Tooltip("Text object where value will be placed (not required)")]
-	public GameObject ValueTextObject;
 
-	[Tooltip("Value of reward")]
-	public int RewardValue = 100;
-
-	[Tooltip("Chance that this sector will be randomly selected")]
-	[RangeAttribute(0, 100)]
-	public int Probability = 100;
-
-	[Tooltip("Method that will be invoked if this sector will be randomly selected")]
-	public UnityEvent RewardCallback;
-}
 
