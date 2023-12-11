@@ -11,17 +11,15 @@ using UnityEditor;
 
 public class FortuneWheelManager : MonoBehaviour
 {
-	[Header("Game Objects for some elements")]
-	public Button PaidTurnButton; 				// This button is showed when you can turn the wheel for coins
+	[Header("Game Objects for some elements")]			
 	public Button FreeTurnButton;				// This button is showed when you can turn the wheel for free
 	public GameObject Circle; 					// Rotatable GameObject on scene with reward objects
 	public Text DeltaCoinsText; 				// Pop-up text with wasted or rewarded coins amount
 	public Text CurrentCoinsText; 				// Pop-up text with wasted or rewarded coins amount
-	public GameObject NextTurnTimerWrapper;
-	public Text NextFreeTurnTimerText;			// Text element that contains remaining time to next free turn
+	
 
 	[Header("How much currency one paid turn costs")]
-	public int TurnCost = 300;					// How much coins user waste when turn whe wheel
+	[Range(1,5)] public int TurnCost;					// How much coins user waste when turn whe wheel
 
 	private bool _isStarted;					// Flag that the wheel is spinning
 
@@ -34,31 +32,18 @@ public class FortuneWheelManager : MonoBehaviour
 	private int _currentCoinsAmount = 1000;		// Started coins amount. In your project it should be picked up from CoinsManager or from PlayerPrefs and so on
 	private int _previousCoinsAmount;
 
-	// Here you can set time between two free turns
-	[Header("Time Between Two Free Turns")]
-	public int TimerMaxHours;
-	[RangeAttribute(0, 59)]
-	public int TimerMaxMinutes;
-	[RangeAttribute(0, 59)]
-	public int TimerMaxSeconds = 10;
+	
 
-	// Remaining time to next free turn
-	private int _timerRemainingHours;
-	private int _timerRemainingMinutes;
-	private int _timerRemainingSeconds;
 
-	private DateTime _nextFreeTurnTime;
+	
 
-	// Key name for storing in PlayerPrefs
-	private const string LAST_FREE_TURN_TIME_NAME = "LastFreeTurnTimeTicks";
+	
 
 	// Set TRUE if you want to let players to turn the wheel for coins while free turn is not available yet
 	[Header("Can players turn the wheel for currency?")]
 	public bool IsPaidTurnEnabled = true;
 
-	// Set TRUE if you want to let players to turn the wheel for FREE from time to time
-	[Header("Can players turn the wheel for FREE from time to time?")]
-	public bool IsFreeTurnEnabled = true;
+	
 
 	// Flag that player can turn the wheel for free right now
 	private bool _isFreeTurnAvailable;
@@ -75,19 +60,14 @@ public class FortuneWheelManager : MonoBehaviour
 		foreach (var sector in Sectors)
 		{
 			if (sector.ValueTextObject != null)
-				sector.ValueTextObject.GetComponent<Text>().text = sector.RewardValue.ToString();
-		}
+			{
+                sector.RewardValue *= TurnCost;
+                sector.ValueTextObject.GetComponent<Text>().text = sector.RewardValue.ToString();
+            }
 
-		if (IsFreeTurnEnabled) {
-			// Start our timer to next free turn
-			SetNextFreeTime ();
+        }
 
-			if (!PlayerPrefs.HasKey(LAST_FREE_TURN_TIME_NAME)) {
-				PlayerPrefs.SetString (LAST_FREE_TURN_TIME_NAME, DateTime.Now.Ticks.ToString());
-			}
-		} else {
-			NextTurnTimerWrapper.gameObject.SetActive (false);
-		}
+		
 	}
 
 	private void TurnWheelForFree() { TurnWheel (true);	}
@@ -149,14 +129,7 @@ public class FortuneWheelManager : MonoBehaviour
 			// Animations for coins
 			StartCoroutine (HideCoinsDelta ());
 			StartCoroutine (UpdateCoinsAmount ());
-		} else {
-			// At this step you can save current time value to your server database as last used free turn
-			// We can't save long int to PlayerPrefs so store this value as string and convert to long later
-			PlayerPrefs.SetString (LAST_FREE_TURN_TIME_NAME, DateTime.Now.Ticks.ToString());
-
-			// Restart timer to next free turn
-			SetNextFreeTime ();
-		}
+		} 
 	}
 
 	public void TurnWheelButtonClick ()
@@ -174,55 +147,13 @@ public class FortuneWheelManager : MonoBehaviour
 		}
 	}
 
-	public void SetNextFreeTime() {
-		// Reset the remaining time values
-		_timerRemainingHours = TimerMaxHours;
-		_timerRemainingMinutes = TimerMaxMinutes;
-		_timerRemainingSeconds = TimerMaxSeconds;
 
-		// Get last free turn time value from storage
-		// We can't save long int to PlayerPrefs so store this value as string and convert to long
-		_nextFreeTurnTime = new DateTime(Convert.ToInt64(PlayerPrefs.GetString (LAST_FREE_TURN_TIME_NAME, DateTime.Now.Ticks.ToString())))
-			.AddHours(TimerMaxHours)
-			.AddMinutes(TimerMaxMinutes)
-			.AddSeconds(TimerMaxSeconds);
 
-		_isFreeTurnAvailable = false;
-	}
-
-	private void ShowTurnButtons ()
-	{
-		if (_isFreeTurnAvailable)				// If have free turn
-		{			
-			ShowFreeTurnButton ();
-			EnableFreeTurnButton ();
-
-		} else { 								// If haven't free turn
-
-			if (!IsPaidTurnEnabled)			// If our settings allow only free turns
-			{
-				ShowFreeTurnButton ();
-				DisableFreeTurnButton ();		// Make button inactive while spinning or timer to next free turn
-
-			} else { 							// If player can turn for coins
-				ShowPaidTurnButton ();
-
-				if (_isStarted || _currentCoinsAmount < TurnCost)
-					DisablePaidTurnButton ();	// Make button non interactable if user has not enough money for the turn of if wheel is turning right now
-				else
-					EnablePaidTurnButton ();	// Can make paid turn right now
-			}
-		}
-	}
+	
 
 	private void Update ()
 	{
-		// We need to show TURN FOR FREE button or TURN FOR COINS button
-		ShowTurnButtons ();
-
-		// Show timer only if we enable free turns
-		if (IsFreeTurnEnabled)
-			UpdateFreeTurnTimer ();
+		
 
 		if (!_isStarted)
 			return;
@@ -293,30 +224,7 @@ public class FortuneWheelManager : MonoBehaviour
 		CurrentCoinsText.text = _currentCoinsAmount.ToString ();
 	}
 
-	// Change remaining time to next free turn every 1 second
-	private void UpdateFreeTurnTimer () 
-	{
-		// Don't count the time if we have free turn already
-		if (_isFreeTurnAvailable)
-			return;
-
-		// Update the remaining time values
-		_timerRemainingHours = (int)(_nextFreeTurnTime - DateTime.Now).Hours;
-		_timerRemainingMinutes = (int)(_nextFreeTurnTime - DateTime.Now).Minutes;
-		_timerRemainingSeconds = (int)(_nextFreeTurnTime - DateTime.Now).Seconds;
-
-		// If the timer has ended
-		if (_timerRemainingHours <= 0 && _timerRemainingMinutes <= 0 && _timerRemainingSeconds <= 0) {
-			NextFreeTurnTimerText.text = "Ready!";
-			// Now we have a free turn
-			_isFreeTurnAvailable = true;
-		} else {
-			// Show the remaining time
-			NextFreeTurnTimerText.text = String.Format ("{0:00}:{1:00}:{2:00}", _timerRemainingHours, _timerRemainingMinutes, _timerRemainingSeconds);
-			// We don't have a free turn yet
-			_isFreeTurnAvailable = false;
-		}
-	}
+	
 
 	private void EnableButton (Button button)
 	{
@@ -333,25 +241,11 @@ public class FortuneWheelManager : MonoBehaviour
 	// Function for more readable calls
 	private void EnableFreeTurnButton () { EnableButton (FreeTurnButton); }
 	private void DisableFreeTurnButton () {	DisableButton (FreeTurnButton);	}
-	private void EnablePaidTurnButton () { EnableButton (PaidTurnButton); }
-	private void DisablePaidTurnButton () { DisableButton (PaidTurnButton); }
+	
 
-	private void ShowFreeTurnButton ()
-	{
-		FreeTurnButton.gameObject.SetActive(true); 
-		PaidTurnButton.gameObject.SetActive(false);
-	}
+	
 
-	private void ShowPaidTurnButton ()
-	{
-		PaidTurnButton.gameObject.SetActive(true); 
-		FreeTurnButton.gameObject.SetActive(false);
-	}
 
-	public void ResetTimer() 
-	{
-		PlayerPrefs.DeleteKey (LAST_FREE_TURN_TIME_NAME);
-	}
 }
 
 /**
@@ -374,22 +268,3 @@ public class FortuneWheelSector : System.Object
 	public UnityEvent RewardCallback;
 }
 
-/**
- * Draw custom button in inspector
- */
-#if UNITY_EDITOR
-[CustomEditor(typeof(FortuneWheelManager))]
-public class FortuneWheelManagerEditor : Editor
-{
-	public override void OnInspectorGUI()
-	{
-		DrawDefaultInspector();
-
-		FortuneWheelManager myScript = (FortuneWheelManager)target;
-		if(GUILayout.Button("Reset Timer"))
-		{
-			myScript.ResetTimer();
-		}
-	}
-}
-#endif

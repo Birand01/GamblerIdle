@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MoneyManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text moneyCounterText;
     [SerializeField] internal int totalMoneyAmount;
-    [SerializeField] private TMP_Text wheelGameMoney;
+    [SerializeField] private Text wheelGameMoney;
    
     private void Awake()
     {

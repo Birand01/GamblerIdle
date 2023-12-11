@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class Rewards : MonoBehaviour
 {
-    [SerializeField] internal List<GameObject> sectors;
+  
     private void OnEnable()
     {
        
@@ -21,17 +21,10 @@ public class Rewards : MonoBehaviour
     }
     private void Awake()
     {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            sectors.Add(this.transform.GetChild(i).gameObject);
-        }
+       
     }
    
-    internal SectorConfiguration GetSector(float angle)
-    {
-        var anglePerSector=360/sectors.Count;
-        return sectors[(int)((angle)/anglePerSector)].gameObject.GetComponent<SectorConfiguration>();
-    }
+   
 
 
 
