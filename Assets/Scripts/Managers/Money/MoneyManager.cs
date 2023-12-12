@@ -8,7 +8,7 @@ public class MoneyManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text moneyCounterText;
     [SerializeField] internal int totalMoneyAmount;
-    [SerializeField] private Text wheelGameMoney;
+    [SerializeField] private TMP_Text wheelGameMoney;
    
     private void Awake()
     {
@@ -17,6 +17,7 @@ public class MoneyManager : MonoBehaviour
     }
     private void OnEnable()
     {
+        Wheel.OnGiveRewardMoney += IncreaseMoneyAmount;
         SpinButton.OnUpdateTotalMoneyAmount += DecreaseMoneyAmount;
         UnlockBuildingBase.OnPayForUnlockingGambleArea += DecreaseMoneyAmount;
         DiamondManager.OnExchangeDiamondToMoney += IncreaseMoneyAmount;
@@ -24,6 +25,7 @@ public class MoneyManager : MonoBehaviour
     }
     private void OnDisable()
     {
+        Wheel.OnGiveRewardMoney -= IncreaseMoneyAmount;
         HammerStoreButton.OnDecreaseMoneyAmount -= DecreaseMoneyAmount;
         DiamondManager.OnExchangeDiamondToMoney -= IncreaseMoneyAmount;
         UnlockBuildingBase.OnPayForUnlockingGambleArea -= DecreaseMoneyAmount;
@@ -44,8 +46,6 @@ public class MoneyManager : MonoBehaviour
         totalMoneyAmount+=amount;
         moneyCounterText.text = totalMoneyAmount.ToString();
         wheelGameMoney.text = totalMoneyAmount.ToString();
-
-
     }
 
     

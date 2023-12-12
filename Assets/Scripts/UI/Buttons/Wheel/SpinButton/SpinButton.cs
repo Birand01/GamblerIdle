@@ -15,7 +15,7 @@ public class SpinButton : MonoBehaviour
     private CompositeDisposable subscriptions = new CompositeDisposable();
     private Button button;
 
-    public static event Action<Button> OnSpinWheel;
+    public static event Action OnSpinWheel;
     public static event Action<int> OnUpdateTotalMoneyAmount;
     private void Awake()
     {
@@ -39,7 +39,7 @@ public class SpinButton : MonoBehaviour
     private void OnButtonClickEvent()
     {
         Debug.Log("SPIN BUTTON IS CLICKED");
-        OnSpinWheel?.Invoke(button);
+        OnSpinWheel?.Invoke();
         OnUpdateTotalMoneyAmount?.Invoke(betAmount.currentBetValue);
     }
 
@@ -49,7 +49,7 @@ public class SpinButton : MonoBehaviour
 
         this.UpdateAsObservable().Subscribe(x =>
         {
-            if ((betAmount.currentBetValue) <= moneyManager.totalMoneyAmount && wheel.isSpinButtonEnable)
+            if ((betAmount.currentBetValue) <= moneyManager.totalMoneyAmount && !wheel._isStarted)
             {
 
                 IsButtonInteractable(true);

@@ -84,7 +84,7 @@ public class FortuneWheelManager : MonoBehaviour
         {
             if (sector.ValueTextObject != null)
             {
-                sector.RewardValue *= TurnCost;
+               
                 sector.ValueTextObject.GetComponent<Text>().text = sector.RewardValue.ToString();
             }
 
