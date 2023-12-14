@@ -46,7 +46,7 @@ public class Wheel : MonoBehaviour
 
         this.UpdateAsObservable().Subscribe(x =>
         {
-
+           
             RotateWheel();
         })
             .AddTo(subscriptions);
@@ -100,6 +100,8 @@ public class Wheel : MonoBehaviour
 
         }
     }
+
+
    
 
     private void SetUpTheOccuranceOfASector()

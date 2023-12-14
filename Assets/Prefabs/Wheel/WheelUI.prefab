@@ -2041,78 +2041,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sectors:
   - ValueTextObject: {fileID: 8302351276844951712}
-    RewardValue: 200
-    probability: 0
-    RewardCallback:
-      m_PersistentCalls:
-        m_Calls: []
+    RewardValue: 50
+    probability: 100
   - ValueTextObject: {fileID: 6709167130222018911}
-    RewardValue: 200
-    probability: 0
-    RewardCallback:
-      m_PersistentCalls:
-        m_Calls: []
+    RewardValue: 150
+    probability: 56
   - ValueTextObject: {fileID: 6709167130272321432}
-    RewardValue: 200
-    probability: 0
-    RewardCallback:
-      m_PersistentCalls:
-        m_Calls: []
+    RewardValue: 0
+    probability: 82
   - ValueTextObject: {fileID: 6709167129837706383}
-    RewardValue: 200
-    probability: 0
-    RewardCallback:
-      m_PersistentCalls:
-        m_Calls: []
+    RewardValue: 400
+    probability: 6
   - ValueTextObject: {fileID: 6709167130183392885}
-    RewardValue: 200
-    probability: 0
-    RewardCallback:
-      m_PersistentCalls:
-        m_Calls: []
+    RewardValue: 300
+    probability: 23
   - ValueTextObject: {fileID: 6709167130280120100}
-    RewardValue: 200
-    probability: 0
-    RewardCallback:
-      m_PersistentCalls:
-        m_Calls: []
+    RewardValue: 5000
+    probability: 1
   - ValueTextObject: {fileID: 6709167129393205310}
-    RewardValue: 200
-    probability: 0
-    RewardCallback:
-      m_PersistentCalls:
-        m_Calls: []
+    RewardValue: 450
+    probability: 7
   - ValueTextObject: {fileID: 6709167129265401129}
-    RewardValue: 200
-    probability: 0
-    RewardCallback:
-      m_PersistentCalls:
-        m_Calls: []
+    RewardValue: 250
+    probability: 54
   - ValueTextObject: {fileID: 6709167130202409028}
-    RewardValue: 200
-    probability: 0
-    RewardCallback:
-      m_PersistentCalls:
-        m_Calls: []
+    RewardValue: 0
+    probability: 83
   - ValueTextObject: {fileID: 6709167129870333908}
-    RewardValue: 200
-    probability: 0
-    RewardCallback:
-      m_PersistentCalls:
-        m_Calls: []
+    RewardValue: 1000
+    probability: 1
   - ValueTextObject: {fileID: 6709167129532224702}
-    RewardValue: 200
-    probability: 0
-    RewardCallback:
-      m_PersistentCalls:
-        m_Calls: []
+    RewardValue: 0
+    probability: 79
   - ValueTextObject: {fileID: 6709167129130818527}
-    RewardValue: 200
-    probability: 0
-    RewardCallback:
-      m_PersistentCalls:
-        m_Calls: []
-  sectorsParent: {fileID: 8302351277554435846}
+    RewardValue: 3000
+    probability: 1
 --- !u!1 &8302351277826643817
 GameObject:
   m_ObjectHideFlags: 0
