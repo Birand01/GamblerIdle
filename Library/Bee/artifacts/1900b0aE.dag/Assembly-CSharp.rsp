@@ -376,7 +376,9 @@
 "Assets/Scripts/Base/RotatorBase.cs"
 "Assets/Scripts/Base/UnlockBuildingBase.cs"
 "Assets/Scripts/GambleAreas/Dice/DiceRotator.cs"
+"Assets/Scripts/GambleAreas/Dice/DiceTable.cs"
 "Assets/Scripts/GambleAreas/Wheel/BetAmount/BetAmount.cs"
+"Assets/Scripts/GambleAreas/Wheel/WheelRotator/WheelRotator.cs"
 "Assets/Scripts/Hammer/HammerDurability.cs"
 "Assets/Scripts/Hammer/HammerDurabilityUI.cs"
 "Assets/Scripts/Interactions/Diamond/DiamondInteraction.cs"
@@ -410,6 +412,7 @@
 "Assets/Scripts/UI/Canvas/CanvasController.cs"
 "Assets/Scripts/UI/Canvas/CanvasManager.cs"
 "Assets/Scripts/UI/Gambles/Wheel/Wheel.cs"
+"Assets/Scripts/VirtualCamera/VirtualCamera.cs"
 -langversion:9.0
 
 /deterministic

@@ -39,7 +39,7 @@ public abstract class UnlockBuildingBase : MonoBehaviour
             {
 
                 this.gameObject.SetActive(false);
-                gamePlayArea.transform.DOScale(1, 0.1f).SetEase(Ease.InBounce);
+                gamePlayArea.transform.DOScale(0.5f, 0.1f).SetEase(Ease.InBounce);
             }
         }
         else

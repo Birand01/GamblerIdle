@@ -105,6 +105,9 @@
     <Compile Include="Assets\Scripts\UI\Buttons\Wheel\BetButtons\IncreaseBet.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\Wheel\BetButtons\Base\BetOptionBase.cs" />
     <Compile Include="Assets\Scripts\Base\RotatorBase.cs" />
+    <Compile Include="Assets\Scripts\GambleAreas\Wheel\WheelRotator\WheelRotator.cs" />
+    <Compile Include="Assets\Scripts\GambleAreas\Dice\DiceTable.cs" />
+    <Compile Include="Assets\Scripts\VirtualCamera\VirtualCamera.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
