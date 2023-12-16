@@ -10,11 +10,13 @@ public class SceneManagement : MonoBehaviour
 
     private void OnEnable()
     {
+        DiceGameExitButton.OnExitFromDiceGame += GoToMainMenu;
         DiceGameInteraction.OnGoToDiceGameScene += GoToDiceGameScene;
     }
     private void OnDisable()
     {
         DiceGameInteraction.OnGoToDiceGameScene -= GoToDiceGameScene;
+        DiceGameExitButton.OnExitFromDiceGame -= GoToMainMenu;
 
     }
 
