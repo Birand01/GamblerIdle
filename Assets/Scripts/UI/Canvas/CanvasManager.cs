@@ -7,7 +7,8 @@ public enum CanvasType
 {
     HammerStoreUI,
     GameUI,
-    WheelGambleUI
+    WheelGambleUI,
+    DiceGambleUI
 }
 public class CanvasManager : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class CanvasManager : MonoBehaviour
     }
     private void OnEnable()
     {
+        ExitDiceGameButton.OnExitDiceGameCanvas += SwitchCanvas;
+        DiceTable.OnSwitchDiceGambleUI += SwitchCanvas;
         ExitWheelGameButton.OnExitWheelGame += SwitchCanvas;
         WheelGameInteraction.OnSwitchWheelGambleUI += SwitchCanvas;
         HammerStoreInteraction.OnSwitchHammerStoreUI += SwitchCanvas;
@@ -30,6 +33,8 @@ public class CanvasManager : MonoBehaviour
         HammerStoreInteraction.OnSwitchHammerStoreUI -= SwitchCanvas;
         WheelGameInteraction.OnSwitchWheelGambleUI -= SwitchCanvas;
         ExitWheelGameButton.OnExitWheelGame -= SwitchCanvas;
+        DiceTable.OnSwitchDiceGambleUI -= SwitchCanvas;
+        ExitDiceGameButton.OnExitDiceGameCanvas -= SwitchCanvas;
 
     }
     private void SwitchCanvas(CanvasType canvasType)

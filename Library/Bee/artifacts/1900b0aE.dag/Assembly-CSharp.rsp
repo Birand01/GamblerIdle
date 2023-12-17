@@ -380,6 +380,7 @@
 "Assets/Scripts/Base/UnlockBuildingBase.cs"
 "Assets/Scripts/GambleAreas/Dice/Dice.cs"
 "Assets/Scripts/GambleAreas/Dice/DiceRotator.cs"
+"Assets/Scripts/GambleAreas/Dice/DiceTable/DiceTable.cs"
 "Assets/Scripts/GambleAreas/Dice/DiceThrower.cs"
 "Assets/Scripts/GambleAreas/Wheel/BetAmount/BetAmount.cs"
 "Assets/Scripts/GambleAreas/Wheel/WheelRotator/WheelRotator.cs"
@@ -405,7 +406,8 @@
 "Assets/Scripts/Sectors/SectorConfiguration.cs"
 "Assets/Scripts/SO/StoreButtonSO/StoreButtonSO.cs"
 "Assets/Scripts/SO/WheelSectors/WheelSectorsSO.cs"
-"Assets/Scripts/UI/Buttons/DiceGameExitButton/DiceGameExitButton.cs"
+"Assets/Scripts/UI/Buttons/DiceGameExitButton/ExitDiceGameButton.cs"
+"Assets/Scripts/UI/Buttons/DiceGameExitButton/RollDiceButton.cs"
 "Assets/Scripts/UI/Buttons/HammerStore/DecreaseHammerDamageButton.cs"
 "Assets/Scripts/UI/Buttons/HammerStore/IncreaseDiggingRateButton.cs"
 "Assets/Scripts/UI/Buttons/HammerStore/IncreaseHammerDurabilityButton.cs"
@@ -419,6 +421,7 @@
 "Assets/Scripts/UI/Canvas/CanvasManager.cs"
 "Assets/Scripts/UI/Gambles/Wheel/Wheel.cs"
 "Assets/Scripts/VirtualCamera/VirtualCamera.cs"
+"Assets/Scripts/VirtualCamera/VirtualCameraController.cs"
 -langversion:9.0
 
 /deterministic

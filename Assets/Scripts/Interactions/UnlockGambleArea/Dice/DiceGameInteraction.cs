@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class DiceGameInteraction : InteractionBase
 {
-    public static event Action<int> OnEnableDiceGameCamera;
+    public static event Action<CameraType> OnSwitchDiceGameCamera;
     protected override void OnTriggerEnterAction(Collider other)
     {
-        OnEnableDiceGameCamera?.Invoke(1);
+       
+        OnSwitchDiceGameCamera?.Invoke(CameraType.diceGameCamera);
         Debug.Log("DICE GAME SCENE");
       
     }

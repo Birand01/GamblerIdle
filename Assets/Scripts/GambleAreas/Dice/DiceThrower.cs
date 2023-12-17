@@ -11,13 +11,14 @@ public class DiceThrower : MonoBehaviour
     [SerializeField] private float throwForce, rollForce;
 
     private List<GameObject> _spawnedDice=new List<GameObject>();
-
-    private void Update()
+    private void OnEnable()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            RollDice();
-        }
+        RollDiceButton.OnRollDice += RollDice;
+    }
+    private void OnDisable()
+    {
+        RollDiceButton.OnRollDice -= RollDice;
+
     }
 
     private async void RollDice()

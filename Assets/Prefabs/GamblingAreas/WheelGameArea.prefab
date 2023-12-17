@@ -844,7 +844,7 @@ GameObject:
   - component: {fileID: 8999121462045060049}
   - component: {fileID: 8999121462045060055}
   - component: {fileID: 8999121462045060054}
-  - component: {fileID: 8999121462045060052}
+  - component: {fileID: 1887292290}
   m_Layer: 0
   m_Name: Wheel
   m_TagString: Untagged
@@ -921,7 +921,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8999121462045060052
+--- !u!114 &1887292290
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -930,7 +930,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8999121462045060048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 884c5d07951adeb4b943936ab696c370, type: 3}
+  m_Script: {fileID: 11500000, guid: e95d601c2007d0047a546c161d2f880b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 100
