@@ -2,17 +2,56 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+
+
 public class VirtualCamera : MonoBehaviour
 {
-    CinemachineVirtualCamera cam;
-    CinemachineTransposer transposer;
    
-    private void Awake()
+
+    [SerializeField] private CinemachineVirtualCamera mainCamera, diceGameCamera;
+
+    private void OnEnable()
     {
-        cam = GetComponent<CinemachineVirtualCamera>();
-        transposer=cam.GetCinemachineComponent<CinemachineTransposer>();
+        DiceGameInteraction.OnEnableDiceGameCamera += SwitchVirtualCameraPriority;
+    }
+    private void OnDisable()
+    {
+        DiceGameInteraction.OnEnableDiceGameCamera -= SwitchVirtualCameraPriority;
+
+    }
+    private void SwitchVirtualCameraPriority(int priority)
+    {
+        diceGameCamera.Priority = priority;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //CinemachineVirtualCamera cam;
+    //CinemachineTransposer transposer;
+
+    private void Awake()
+    {
+        //cam = GetComponent<CinemachineVirtualCamera>();
+        //transposer=cam.GetCinemachineComponent<CinemachineTransposer>();
+    }
+
+   
 
     //private void DiceGameCamPosition()
     //{
