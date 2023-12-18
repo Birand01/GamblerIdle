@@ -3,24 +3,48 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-
+using UniRx;
+using UniRx.Triggers;
 [RequireComponent(typeof(Rigidbody))]
 public class Dice : MonoBehaviour
 {
+    private CompositeDisposable subscriptions = new CompositeDisposable();
     [SerializeField] private Transform[] diceFaces;
     private Rigidbody rb;
     private int _diceIndex = -1;
     private bool _hasStoppedRolling, _delayFinished;
 
     public static event Action<int, int> OnDiceResult;
+    public static event Action<bool> OnDisableRollDiceButton;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
-    private void Update()
+    private void OnEnable()
     {
-        if(!_delayFinished) { return; }
-        if(!_hasStoppedRolling && rb.velocity.sqrMagnitude==0f)
+        StartCoroutine(Subscribe());
+    }
+    private void OnDisable()
+    {
+        subscriptions.Clear();
+    }
+    private IEnumerator Subscribe()
+    {
+        yield return null;
+        this.UpdateAsObservable()
+            .Subscribe(value =>
+            {
+                GetTopFacesOfDices();
+
+            })
+            .AddTo(subscriptions);
+
+    }
+   
+    private void GetTopFacesOfDices()
+    {
+        if (!_delayFinished) { return; }
+        if (!_hasStoppedRolling && rb.velocity.sqrMagnitude == 0f)
         {
             _hasStoppedRolling = true;
             GetNumberOnTopFace();
@@ -49,6 +73,7 @@ public class Dice : MonoBehaviour
 
     internal void RollDice(float throwForce, float rollForce, int i)
     {
+        OnDisableRollDiceButton?.Invoke(false);
         _diceIndex = i;
         var randomVariance= UnityEngine.Random.Range(-1f, 1f);
         rb.AddForce(transform.forward * (throwForce + randomVariance), ForceMode.Impulse);
@@ -56,13 +81,17 @@ public class Dice : MonoBehaviour
         var randY = UnityEngine.Random.Range(0, 1f);
         var randZ = UnityEngine.Random.Range(0, 1f);
         rb.AddTorque(new Vector3(randX, randY, randZ)*(rollForce+randomVariance),ForceMode.Impulse);
-        DelayResult();
+        StartCoroutine(DelayResult());
 
     }
 
-    private async void DelayResult()
+    private IEnumerator DelayResult()
     {
-        await Task.Delay(1000);
+        yield return new WaitForSeconds(1f);
         _delayFinished = true;
+        yield return new WaitForSeconds(1f);
+        OnDisableRollDiceButton?.Invoke(true);
     }
+
+   
 }

@@ -11,6 +11,7 @@ public class DiceThrower : MonoBehaviour
     [SerializeField] private float throwForce, rollForce;
 
     private List<GameObject> _spawnedDice=new List<GameObject>();
+  
     private void OnEnable()
     {
         RollDiceButton.OnRollDice += RollDice;
@@ -21,20 +22,26 @@ public class DiceThrower : MonoBehaviour
 
     }
 
-    private async void RollDice()
+    private IEnumerator RollDice()
     {
-        if(diceToThrow == null)
-        { return; }
+        if (diceToThrow == null)
+        { yield return null; }
+
         foreach (var die in _spawnedDice)
         {
-            Destroy(die);
+            die.gameObject.SetActive(false);
+            // TO DO : USE oBJECT POOLING
         }
         for (int i = 0; i < amountOfDice; i++)
         {
-            Dice dice = Instantiate(diceToThrow, transform.position, transform.rotation);
+            Dice dice = Instantiate(diceToThrow,new Vector3(transform.position.x+i,transform.position.y,transform.position.z), transform.rotation);
+            dice.transform.SetParent(this.transform);
             _spawnedDice.Add(dice.gameObject);
-            dice.RollDice(throwForce, rollForce,i);
-            await Task.Yield();
+            dice.RollDice(throwForce, rollForce, i);
+            yield return new WaitForSeconds(0.1f);
+
         }
     }
+
+   
 }

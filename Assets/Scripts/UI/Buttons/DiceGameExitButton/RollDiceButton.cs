@@ -7,7 +7,18 @@ public class RollDiceButton : MonoBehaviour
 {
     private Button button;
 
-    public static event Action OnRollDice;
+    public delegate IEnumerator OnRollDiceEventHandler();
+    public static event OnRollDiceEventHandler OnRollDice;
+
+    private void OnEnable()
+    {
+        Dice.OnDisableRollDiceButton += IsButtonInteractable;
+    }
+    private void OnDisable()
+    {
+        Dice.OnDisableRollDiceButton -= IsButtonInteractable;
+
+    }
     private void Awake()
     {
         button = GetComponent<Button>();
@@ -19,6 +30,18 @@ public class RollDiceButton : MonoBehaviour
 
     private void OnButtonClickEvent()
     {
-        OnRollDice?.Invoke();
+       StartCoroutine( OnRollDice?.Invoke());
+    }
+
+    private void IsButtonInteractable(bool state)
+    {
+        if (state)
+        {
+            button.interactable = state;
+        }
+        else
+        {
+            button.interactable = false;
+        }
     }
 }
