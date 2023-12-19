@@ -12,9 +12,10 @@ public class Dice : MonoBehaviour
     [SerializeField] private Transform[] diceFaces;
     private Rigidbody rb;
     private int _diceIndex = -1;
+    private int topFace = 0;
     private bool _hasStoppedRolling, _delayFinished;
 
-    public static event Action<int, int> OnDiceResult;
+    public static event Action<int> OnDiceResult;
     public static event Action<bool> OnDisableRollDiceButton;
     private void Awake()
     {
@@ -22,11 +23,14 @@ public class Dice : MonoBehaviour
     }
     private void OnEnable()
     {
+       
         StartCoroutine(Subscribe());
     }
     private void OnDisable()
     {
         subscriptions.Clear();
+       
+
     }
     private IEnumerator Subscribe()
     {
@@ -55,7 +59,6 @@ public class Dice : MonoBehaviour
     private int GetNumberOnTopFace()
     {
         if(diceFaces==null) return -1;
-        var topFace = 0;
         var lastYPosition = diceFaces[0].position.y;
         for (int i = 0; i < diceFaces.Length; i++)
         {
@@ -66,10 +69,12 @@ public class Dice : MonoBehaviour
             }
         }
         Debug.Log($"DICE RESULT IS : {topFace + 1}");
-        OnDiceResult?.Invoke(_diceIndex, topFace+1);
+        OnDiceResult?.Invoke(topFace+1);
 
         return topFace + 1;
     }
+
+ 
 
     internal void RollDice(float throwForce, float rollForce, int i)
     {

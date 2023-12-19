@@ -15,6 +15,5 @@ public class DependencyInjector : MonoInstaller
         //Container.Bind<FortuneWheelManager>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<BetAmount>().FromComponentInHierarchy().AsSingle().NonLazy();
         Container.Bind<Wheel>().FromComponentInHierarchy().AsSingle().NonLazy();
-
     }
 }

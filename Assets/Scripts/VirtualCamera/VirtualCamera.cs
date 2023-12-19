@@ -16,8 +16,7 @@ public class VirtualCamera : MonoBehaviour
 {
     List<VirtualCameraController> virtualCameraControllerList;
     internal VirtualCameraController lastActiveCamera;
-
-
+   
     private void Awake()
     {
         virtualCameraControllerList = GetComponentsInChildren<VirtualCameraController>().ToList();

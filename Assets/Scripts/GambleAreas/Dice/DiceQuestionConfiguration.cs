@@ -8,7 +8,7 @@ public class DiceQuestionConfiguration : MonoBehaviour
     [SerializeField] internal DiceGameQuestionSO gameQuestionSO;
     [SerializeField] private TMP_Text questionText;
     [SerializeField] private TMP_Text betRateText;
-    [SerializeField] private TMP_Text expectedDiceValue;
+    [SerializeField] internal TMP_Text expectedDiceValue;
   
     private void OnEnable()
     {
@@ -16,26 +16,12 @@ public class DiceQuestionConfiguration : MonoBehaviour
         SetUpConfiguration();
 
     }
-    private void OnDisable()
-    {
-
-
-    }
-
-
     private void SetUpConfiguration()
     {
         
             questionText.text = gameQuestionSO.questionText.ToString();
             betRateText.text = gameQuestionSO.betRate.ToString();
-            expectedDiceValue.text = gameQuestionSO.rolledDiceValue.ToString();
-        
+            expectedDiceValue.text = gameQuestionSO.rolledDiceValue.ToString();       
     }
-
-
-
-
-  
-
 
 }

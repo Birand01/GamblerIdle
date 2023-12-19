@@ -67,6 +67,8 @@
     <Compile Include="Assets\Scripts\Interactions\UnlockGambleArea\Wheel\WheelGameInteraction.cs" />
     <Compile Include="Assets\Scripts\Base\InteractionBase.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\DiceGameButtons\QuestionBase.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\DiceGameButtons\NextQuestionButton.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\Wheel\BetButtons\DecreaseBet.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
     <Compile Include="Assets\Scripts\Interactions\Stone\StoneAreaInteraction.cs" />
@@ -80,9 +82,11 @@
     <Compile Include="Assets\Scripts\Interactions\UnlockGambleArea\Dice\DiceGameInteraction.cs" />
     <Compile Include="Assets\Scripts\Hammer\HammerDurabilityUI.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\DiceGameExitButton\RollDiceButton.cs" />
+    <Compile Include="Assets\Scripts\UI\Buttons\DiceGameButtons\PreviousQuestion.cs" />
     <Compile Include="Assets\Scripts\GambleAreas\Dice\DiceThrower.cs" />
     <Compile Include="Assets\Scripts\Interactions\Mechanic\HammerStoreInteraction.cs" />
     <Compile Include="Assets\Scripts\Base\HammerStoreButton.cs" />
+    <Compile Include="Assets\Scripts\GambleAreas\Dice\DiceQuestionConfiguration.cs" />
     <Compile Include="Assets\Scripts\Player\AnimationEvents.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Examples\JoystickPlayerExample.cs" />
     <Compile Include="Assets\FortuneWheel\Scripts\FortuneWheelManager.cs" />
@@ -93,6 +97,7 @@
     <Compile Include="Assets\Art\Joystick Pack\Scripts\Base\Joystick.cs" />
     <Compile Include="Assets\Scripts\Managers\Money\MoneyManager.cs" />
     <Compile Include="Assets\Scripts\GambleAreas\Wheel\BetAmount\BetAmount.cs" />
+    <Compile Include="Assets\Scripts\Managers\DiceQuestion\DiceQuestionManager.cs" />
     <Compile Include="Assets\Scripts\Sectors\SectorConfiguration.cs" />
     <Compile Include="Assets\Scripts\GambleAreas\Dice\DiceRotator.cs" />
     <Compile Include="Assets\Scripts\UI\Canvas\CanvasController.cs" />
@@ -105,6 +110,7 @@
     <Compile Include="Assets\Scripts\VirtualCamera\VirtualCameraController.cs" />
     <Compile Include="Assets\Scripts\Interactions\DiamondExchangeArea\ExchangeArea.cs" />
     <Compile Include="Assets\Scripts\Interactions\Diamond\DiamondInteraction.cs" />
+    <Compile Include="Assets\Scripts\SO\DiceGameSO\DiceGameQuestionSO.cs" />
     <Compile Include="Assets\Scripts\Interactions\GamblingAreas\UnlockGamblingArea.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\Wheel\RewardSectors\Rewards.cs" />
     <Compile Include="Assets\Art\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
@@ -114,12 +120,6 @@
     <Compile Include="Assets\Scripts\UI\Buttons\Wheel\BetButtons\Base\BetOptionBase.cs" />
     <Compile Include="Assets\Scripts\Base\RotatorBase.cs" />
     <Compile Include="Assets\Scripts\GambleAreas\Dice\DiceTable\DiceTable.cs" />
-    <Compile Include="Assets\Scripts\SO\DiceGameSO\DiceGameQuestionSO.cs" />
-    <Compile Include="Assets\Scripts\GambleAreas\Dice\DiceQuestionConfiguration.cs" />
-    <Compile Include="Assets\Scripts\UI\Buttons\DiceGameButtons\NextQuestionButton.cs" />
-    <Compile Include="Assets\Scripts\UI\Buttons\DiceGameButtons\PreviousQuestion.cs" />
-    <Compile Include="Assets\Scripts\UI\Buttons\DiceGameButtons\QuestionBase.cs" />
-    <Compile Include="Assets\Scripts\Managers\DiceQuestion\DiceQuestionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
