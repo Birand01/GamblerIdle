@@ -379,6 +379,7 @@
 "Assets/Scripts/Base/RotatorBase.cs"
 "Assets/Scripts/Base/UnlockBuildingBase.cs"
 "Assets/Scripts/GambleAreas/Dice/Dice.cs"
+"Assets/Scripts/GambleAreas/Dice/DiceAwardManager.cs"
 "Assets/Scripts/GambleAreas/Dice/DiceQuestionConfiguration.cs"
 "Assets/Scripts/GambleAreas/Dice/DiceRotator.cs"
 "Assets/Scripts/GambleAreas/Dice/DiceTable/DiceTable.cs"

@@ -2894,7 +2894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyCounterText: {fileID: 1949818470}
-  totalMoneyAmount: 1250
+  totalMoneyAmount: 300
   wheelGameMoneyText: {fileID: 8302351277136085602}
   diceGameMoneyText: {fileID: 279597796}
 --- !u!1 &1092714428
@@ -3270,6 +3270,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 245852293, guid: de94aa0c28fa5414cacb9e6ce4ec2a10, type: 3}
+      propertyPath: rollForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 245852293, guid: de94aa0c28fa5414cacb9e6ce4ec2a10, type: 3}
+      propertyPath: throwForce
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1672708454025714537, guid: de94aa0c28fa5414cacb9e6ce4ec2a10, type: 3}
       propertyPath: m_Name
       value: DiceGambleArea

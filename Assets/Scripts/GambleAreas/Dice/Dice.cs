@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
+using System.Reflection;
+using UnityEditor.Experimental.GraphView;
+
 [RequireComponent(typeof(Rigidbody))]
 public class Dice : MonoBehaviour
 {
@@ -15,21 +18,26 @@ public class Dice : MonoBehaviour
     private int topFace = 0;
     private bool _hasStoppedRolling, _delayFinished;
 
-    public static event Action<int> OnDiceResult;
+    public delegate IEnumerator OnDiceResultEventHandler(int a, int b);
+    public static event OnDiceResultEventHandler OnDiceResult;
+
     public static event Action<bool> OnDisableRollDiceButton;
+    private int topface1,topface2=0;
+    private int sum, multiplication, difference;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
     }
     private void OnEnable()
     {
-       
+        OnDiceResult += DiceCalculations;
         StartCoroutine(Subscribe());
     }
     private void OnDisable()
     {
         subscriptions.Clear();
-       
+        OnDiceResult -= DiceCalculations;
+
 
     }
     private IEnumerator Subscribe()
@@ -39,6 +47,7 @@ public class Dice : MonoBehaviour
             .Subscribe(value =>
             {
                 GetTopFacesOfDices();
+               
 
             })
             .AddTo(subscriptions);
@@ -52,6 +61,7 @@ public class Dice : MonoBehaviour
         {
             _hasStoppedRolling = true;
             GetNumberOnTopFace();
+            
         }
     }
 
@@ -68,14 +78,35 @@ public class Dice : MonoBehaviour
                 topFace=i;
             }
         }
-        Debug.Log($"DICE RESULT IS : {topFace + 1}");
-        OnDiceResult?.Invoke(topFace+1);
-
+        
+       StartCoroutine( OnDiceResult?.Invoke(_diceIndex,topFace + 1));
+      
+        //Debug.Log($"DICE RESULT IS : {topFace + 1} and " + "DICE INDEX IS :" + _diceIndex);
         return topFace + 1;
     }
 
- 
+    private IEnumerator DiceCalculations(int diceIndex,int diceValue)
+    {
+       
+       
+        if(diceIndex==0)
+        {
+            topface1 = diceValue;
+        }
+        else if(diceIndex==1)
+        {
+            topface2 = diceValue;
 
+          
+        }
+        yield return new WaitForSeconds(2f);
+        sum = topface1 + topface2;
+        multiplication = topface1 * topface2;
+        difference = Mathf.Abs(topface1 - topface2);
+        Debug.Log("SUM :" + sum + "--" + "MULTIPLICATION :" + multiplication + "--" + "DIFFERENCE : " + difference);
+        yield return null;
+    }
+   
     internal void RollDice(float throwForce, float rollForce, int i)
     {
         OnDisableRollDiceButton?.Invoke(false);
