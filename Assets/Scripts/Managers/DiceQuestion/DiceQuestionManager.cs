@@ -11,11 +11,12 @@ public class DiceQuestionManager : MonoBehaviour
     [SerializeField] private int numberOfQuestion;
     [SerializeField] private Button prevButton, nextButton;
 
-    public static event Action<int> OnDiceGameBetValue;
-    public static event Action<Operation,int> OnExpectedDiceOutCome;
+    
 
 
     private int currentQuestion;
+    internal Operation operation;
+    internal int expectedRolledDiceValue;
     private void OnEnable()
     {
         InstantiateQuestion();
@@ -40,21 +41,12 @@ public class DiceQuestionManager : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).gameObject.SetActive(i == index);
-            for (int j = 0; j < transform.childCount; j++)
-            {
-                if(transform.GetChild(j).gameObject.activeInHierarchy)
-                {
-                    OnDiceGameBetValue?.Invoke(transform.GetChild(j).gameObject.GetComponent<DiceQuestionConfiguration>().gameQuestionSO.betRate);
-                   // Debug.Log(transform.GetChild(j).gameObject.GetComponent<DiceQuestionConfiguration>().gameQuestionSO.betRate);
-                    OnExpectedDiceOutCome?.Invoke(transform.GetChild(j).gameObject.GetComponent<DiceQuestionConfiguration>().gameQuestionSO.operation, 
-                        transform.GetChild(j).gameObject.GetComponent<DiceQuestionConfiguration>().gameQuestionSO.rolledDiceValue);
-                    Debug.Log(transform.GetChild(j).gameObject.GetComponent<DiceQuestionConfiguration>().gameQuestionSO.operation +"--"+ transform.GetChild(j).gameObject.GetComponent<DiceQuestionConfiguration>().gameQuestionSO.rolledDiceValue);
-                    break;
-                }
-            }
+           
         }
        
     }
+
+    
     
     
     public void ChangeQuestion(int change)

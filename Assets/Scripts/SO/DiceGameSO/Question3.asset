@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86c88468f52f86438fce4c44f8ce2f1, type: 3}
   m_Name: Question3
   m_EditorClassIdentifier: 
-  operation: 1
+  operation: 0
   questionText: 'Multiplication of the rolled dices '
   betRate: 250
-  rolledDiceValue: 36
+  expectedRolledDiceValue: 7

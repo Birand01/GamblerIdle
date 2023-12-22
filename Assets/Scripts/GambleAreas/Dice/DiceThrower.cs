@@ -26,7 +26,7 @@ public class DiceThrower : MonoBehaviour
     {
         if (diceToThrow == null)
         { yield return null; }
-
+      
         foreach (var die in _spawnedDice)
         {
             die.gameObject.SetActive(false);

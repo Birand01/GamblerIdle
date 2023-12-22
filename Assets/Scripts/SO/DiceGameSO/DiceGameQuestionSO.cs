@@ -13,7 +13,7 @@ public class DiceGameQuestionSO : ScriptableObject
     public Operation operation;
     public string questionText;
     public int betRate;
-    [Range(0, 36)] public int rolledDiceValue;
+    [Range(0, 36)] public int expectedRolledDiceValue;
    
     private void OnValidate()
     {
@@ -23,16 +23,16 @@ public class DiceGameQuestionSO : ScriptableObject
     {
         if(operation == Operation.Sum)
         {
-            rolledDiceValue = Mathf.Clamp(rolledDiceValue,2,12);
+            expectedRolledDiceValue = Mathf.Clamp(expectedRolledDiceValue,2,12);
         }
         else if(operation == Operation.Multiplication)
         {
-            rolledDiceValue = Mathf.Clamp(rolledDiceValue, 1, 36);
+            expectedRolledDiceValue = Mathf.Clamp(expectedRolledDiceValue, 1, 36);
 
         }
         else if(operation == Operation.Difference)
         {
-            rolledDiceValue = Mathf.Clamp(rolledDiceValue,0, 5);
+            expectedRolledDiceValue = Mathf.Clamp(expectedRolledDiceValue,0, 5);
 
         }
     }

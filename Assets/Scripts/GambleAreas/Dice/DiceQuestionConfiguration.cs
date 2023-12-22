@@ -21,7 +21,7 @@ public class DiceQuestionConfiguration : MonoBehaviour
         
             questionText.text = gameQuestionSO.questionText.ToString();
             betRateText.text = gameQuestionSO.betRate.ToString();
-            expectedDiceValue.text = gameQuestionSO.rolledDiceValue.ToString();       
+            expectedDiceValue.text = gameQuestionSO.expectedRolledDiceValue.ToString();       
     }
 
 }

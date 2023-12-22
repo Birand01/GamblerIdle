@@ -13,6 +13,7 @@ public class RollDiceButton : MonoBehaviour
 
     private Button button;
     [Inject] MoneyManager moneyManager;
+    [Inject] DiceAwardManager diceAwardManager;
     public delegate IEnumerator OnRollDiceEventHandler();
     public static event OnRollDiceEventHandler OnRollDice;
 
@@ -20,13 +21,13 @@ public class RollDiceButton : MonoBehaviour
     {
         StartCoroutine(Subscribe());
         Dice.OnDisableRollDiceButton += IsButtonInteractable;
-        DiceQuestionManager.OnDiceGameBetValue += CanRollDice;
+      //  DiceAwardManager.OnDiceGameBetValue += CanRollDice;
     }
     private void OnDisable()
     {
-        DiceQuestionManager.OnDiceGameBetValue -= CanRollDice;
+       // DiceAwardManager.OnDiceGameBetValue -= CanRollDice;
         Dice.OnDisableRollDiceButton -= IsButtonInteractable;
-        subscriptions.Clear();
+
     }
     private void Awake()
     {
@@ -42,15 +43,15 @@ public class RollDiceButton : MonoBehaviour
         this.UpdateAsObservable()
             .Subscribe(value =>
             {
-                
+                CanRollDice();
 
             })
             .AddTo(subscriptions);
 
     }
-    private void CanRollDice(int diceBetValue)
+    private void CanRollDice()
     {
-        if (moneyManager.totalMoneyAmount >=diceBetValue)
+        if (moneyManager.totalMoneyAmount >=diceAwardManager.betRate)
         {
             IsButtonInteractable(true);
         }

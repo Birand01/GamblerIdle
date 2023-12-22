@@ -15,4 +15,4 @@ MonoBehaviour:
   operation: 0
   questionText: 'Sum of the rolled dices '
   betRate: 100
-  rolledDiceValue: 12
+  expectedRolledDiceValue: 4
