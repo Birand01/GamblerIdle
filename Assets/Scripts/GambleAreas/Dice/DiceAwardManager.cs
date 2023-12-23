@@ -5,12 +5,18 @@ using UniRx;
 using UniRx.Triggers;
 using Unity.VisualScripting;
 using UnityEngine;
+using Zenject;
 
 public class DiceAwardManager : MonoBehaviour
 {
+    [Inject] MoneyManager moneyManager;
     private CompositeDisposable subscriptions = new CompositeDisposable();
-    public static event Action<int> OnDiceGameBetValue;
+    public static event Action<bool> OnDiceGameBetValue;
     public static event Action<Operation, int> OnExpectedDiceOutCome;
+
+    public delegate IEnumerator OnDiceGameBetAwardHandler(int amount);
+
+    public static event OnDiceGameBetAwardHandler OnGetAward;
 
     internal Operation currentOperation;
     internal int currentExpectedDiceValue, betRate;
@@ -20,19 +26,36 @@ public class DiceAwardManager : MonoBehaviour
        
         StartCoroutine(Subscribe());
         Dice.OnDiceCalculation += QuestionStatusCheck;
-       
-       
+      
     }
-    private void Start()
-    {
-       
-    }
+   
 
     private void OnDisable()
     {
         Dice.OnDiceCalculation -= QuestionStatusCheck;
         subscriptions.Clear();
     }
+
+    private void OnDiceRollButtonActivation()
+    {
+        for (int j = 0; j < transform.childCount; j++)
+        {
+            if (transform.GetChild(j).gameObject.activeInHierarchy)
+            {
+                betRate = transform.GetChild(j).gameObject.GetComponent<DiceQuestionConfiguration>().gameQuestionSO.betRate;
+                if (betRate < moneyManager.totalMoneyAmount)
+                {
+                    OnDiceGameBetValue?.Invoke(true);
+                }
+                else
+                {
+                    OnDiceGameBetValue?.Invoke(false);
+                }
+            }
+        }
+    }
+
+  
 
     private IEnumerator QuestionStatusCheck(int sum,int multiplication,int difference)
     {
@@ -41,6 +64,7 @@ public class DiceAwardManager : MonoBehaviour
         {
             if (transform.GetChild(j).gameObject.activeInHierarchy)
             {
+
                 betRate = transform.GetChild(j).gameObject.GetComponent<DiceQuestionConfiguration>().gameQuestionSO.betRate;
                 currentOperation = transform.GetChild(j).gameObject.GetComponent<DiceQuestionConfiguration>().gameQuestionSO.operation;
                 currentExpectedDiceValue = transform.GetChild(j).gameObject.GetComponent<DiceQuestionConfiguration>().gameQuestionSO.expectedRolledDiceValue;
@@ -51,9 +75,11 @@ public class DiceAwardManager : MonoBehaviour
                         if(sum==currentExpectedDiceValue)
                         {
                             Debug.Log("A");
+                           StartCoroutine(OnGetAward?.Invoke(betRate));
                         }
                         else
                         {
+                            StartCoroutine(OnGetAward?.Invoke(-betRate));
                             Debug.Log("B");
                         }
                         break;
@@ -82,8 +108,7 @@ public class DiceAwardManager : MonoBehaviour
         this.UpdateAsObservable()
             .Subscribe(value =>
             {
-                // QuestionStatusCheck();
-                //DiceRollButtonInteractibility();
+                OnDiceRollButtonActivation();
             })
             .AddTo(subscriptions);
 

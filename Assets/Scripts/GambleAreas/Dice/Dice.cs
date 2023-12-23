@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
+using DG.Tweening;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Dice : MonoBehaviour
@@ -20,7 +21,7 @@ public class Dice : MonoBehaviour
     public static event OnDiceResultEventHandler OnDiceResult;
     public delegate IEnumerator OnDiceCalculationEventHandler(int a, int b,int c);
     public static event OnDiceCalculationEventHandler OnDiceCalculation;
-    public static event Action<bool> OnDisableRollDiceButton;
+    public static event Action<Vector3,Ease> OnDiceRollScale;
     
     private int topface1,topface2=0;
     internal int sum, multiplication, difference;
@@ -96,8 +97,9 @@ public class Dice : MonoBehaviour
 
 
     private IEnumerator DiceCalculations(int diceIndex,int diceValue)
-    {  
-        if(diceIndex==0)
+    {
+        
+        if (diceIndex==0)
         {
             topface1 = diceValue;
         }
@@ -115,7 +117,7 @@ public class Dice : MonoBehaviour
  
 
         Debug.Log("SUM :" + sum + "--" + "MULTIPLICATION :" + multiplication + "--" + "DIFFERENCE : " + difference);
-        yield return null;
+       
     }
 
     
@@ -125,7 +127,7 @@ public class Dice : MonoBehaviour
    
     internal void RollDice(float throwForce, float rollForce, int i)
     {
-        OnDisableRollDiceButton?.Invoke(false);
+        OnDiceRollScale?.Invoke(Vector3.zero,Ease.InBounce);
         _diceIndex = i;
         var randomVariance= UnityEngine.Random.Range(-1f, 1f);
         rb.AddForce(transform.forward * (throwForce + randomVariance), ForceMode.Impulse);
@@ -142,8 +144,8 @@ public class Dice : MonoBehaviour
         yield return new WaitForSeconds(1f);
         _delayFinished = true;
         yield return new WaitForSeconds(2f);
-       
-        OnDisableRollDiceButton?.Invoke(true);
+        OnDiceRollScale?.Invoke(Vector3.one,Ease.InOutBounce);
+
     }
 
    

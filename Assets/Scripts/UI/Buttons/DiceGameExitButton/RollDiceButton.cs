@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,29 +6,28 @@ using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
+
 
 public class RollDiceButton : MonoBehaviour
 {
     private CompositeDisposable subscriptions = new CompositeDisposable();
 
     private Button button;
-    [Inject] MoneyManager moneyManager;
-    [Inject] DiceAwardManager diceAwardManager;
+   
     public delegate IEnumerator OnRollDiceEventHandler();
     public static event OnRollDiceEventHandler OnRollDice;
 
     private void OnEnable()
     {
         StartCoroutine(Subscribe());
-        Dice.OnDisableRollDiceButton += IsButtonInteractable;
-      //  DiceAwardManager.OnDiceGameBetValue += CanRollDice;
+        DiceAwardManager.OnDiceGameBetValue += IsButtonInteractable;
+        Dice.OnDiceRollScale += ScaleOfButton;
+       
     }
     private void OnDisable()
     {
-       // DiceAwardManager.OnDiceGameBetValue -= CanRollDice;
-        Dice.OnDisableRollDiceButton -= IsButtonInteractable;
-
+        Dice.OnDiceRollScale -= ScaleOfButton;
+        DiceAwardManager.OnDiceGameBetValue -= IsButtonInteractable;
     }
     private void Awake()
     {
@@ -43,24 +43,18 @@ public class RollDiceButton : MonoBehaviour
         this.UpdateAsObservable()
             .Subscribe(value =>
             {
-                CanRollDice();
+                
 
             })
             .AddTo(subscriptions);
 
     }
-    private void CanRollDice()
-    {
-        if (moneyManager.totalMoneyAmount >=diceAwardManager.betRate)
-        {
-            IsButtonInteractable(true);
-        }
-        else
-        {
-            IsButtonInteractable(false);
-        }
-    }
 
+    private void ScaleOfButton(Vector3 vector3,Ease ease)
+    {
+        this.gameObject.transform.DOScale(vector3, 0.2f).SetEase(ease);
+    }
+   
 
     private void OnButtonClickEvent()
     {

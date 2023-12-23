@@ -414,6 +414,7 @@
 "Assets/Scripts/UI/Buttons/DiceGameButtons/PreviousQuestion.cs"
 "Assets/Scripts/UI/Buttons/DiceGameButtons/QuestionBase.cs"
 "Assets/Scripts/UI/Buttons/DiceGameExitButton/ExitDiceGameButton.cs"
+"Assets/Scripts/UI/Buttons/DiceGameExitButton/QuestionButtons/ButtonScale.cs"
 "Assets/Scripts/UI/Buttons/DiceGameExitButton/RollDiceButton.cs"
 "Assets/Scripts/UI/Buttons/HammerStore/DecreaseHammerDamageButton.cs"
 "Assets/Scripts/UI/Buttons/HammerStore/IncreaseDiggingRateButton.cs"

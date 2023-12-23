@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MoneyManager : MonoBehaviour
 {
-    [SerializeField] private TMP_Text moneyCounterText;
+    [SerializeField] internal TMP_Text moneyCounterText;
     [SerializeField] internal int totalMoneyAmount;
     [SerializeField] private TMP_Text wheelGameMoneyText, diceGameMoneyText;
    
@@ -18,19 +18,22 @@ public class MoneyManager : MonoBehaviour
     }
     private void OnEnable()
     {
+        DiceAwardManager.OnGetAward += OnGetAward;
         Wheel.OnGiveRewardMoney += IncreaseWheelMoneyAmount;
         SpinButton.OnUpdateTotalMoneyAmount += DecreaseMoneyAmount;
         UnlockBuildingBase.OnPayForUnlockingGambleArea += DecreaseMoneyAmount;
-        DiamondManager.OnExchangeDiamondToMoney += IncreaseDiamondMoneyAmount;
+        DiamondManager.OnExchangeDiamondToMoney += ChangeDiamondMoneyAmount;
         HammerStoreButton.OnDecreaseMoneyAmount += DecreaseMoneyAmount;
     }
     private void OnDisable()
     {
         Wheel.OnGiveRewardMoney -= IncreaseWheelMoneyAmount;
         HammerStoreButton.OnDecreaseMoneyAmount -= DecreaseMoneyAmount;
-        DiamondManager.OnExchangeDiamondToMoney -= IncreaseDiamondMoneyAmount;
+        DiamondManager.OnExchangeDiamondToMoney -= ChangeDiamondMoneyAmount;
         UnlockBuildingBase.OnPayForUnlockingGambleArea -= DecreaseMoneyAmount;
         SpinButton.OnUpdateTotalMoneyAmount -= DecreaseMoneyAmount;
+        DiceAwardManager.OnGetAward -= OnGetAward;
+
 
     }
     private void DecreaseMoneyAmount(int amount)
@@ -41,8 +44,14 @@ public class MoneyManager : MonoBehaviour
         wheelGameMoneyText.text = totalMoneyAmount.ToString();
         diceGameMoneyText.text = totalMoneyAmount.ToString();
     }
-    private void IncreaseDiamondMoneyAmount(int amount)
+    private void ChangeDiamondMoneyAmount(int amount)
     {
+        totalMoneyAmount += amount;
+        moneyCounterText.text = totalMoneyAmount.ToString();
+    }
+    private IEnumerator OnGetAward(int amount)
+    {
+        yield return null;
         totalMoneyAmount += amount;
         moneyCounterText.text = totalMoneyAmount.ToString();
     }
