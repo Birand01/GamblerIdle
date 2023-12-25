@@ -427,6 +427,7 @@
 "Assets/Scripts/UI/Buttons/Wheel/SpinButton/SpinButton.cs"
 "Assets/Scripts/UI/Canvas/CanvasController.cs"
 "Assets/Scripts/UI/Canvas/CanvasManager.cs"
+"Assets/Scripts/UI/Gambles/Dice/DiceUI.cs"
 "Assets/Scripts/UI/Gambles/Wheel/Wheel.cs"
 "Assets/Scripts/VirtualCamera/VirtualCamera.cs"
 "Assets/Scripts/VirtualCamera/VirtualCameraController.cs"

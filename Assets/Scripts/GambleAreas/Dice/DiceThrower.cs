@@ -22,7 +22,7 @@ public class DiceThrower : MonoBehaviour
 
     }
 
-    private void RollDice()
+    private async void RollDice()
     {
        
         foreach (var die in _spawnedDice)
@@ -37,6 +37,7 @@ public class DiceThrower : MonoBehaviour
             dice.transform.SetParent(this.transform);
             _spawnedDice.Add(dice.gameObject);
             dice.RollDice(throwForce, rollForce, i);
+            await Task.Yield();
         }
     }
 

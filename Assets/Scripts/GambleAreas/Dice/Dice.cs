@@ -5,6 +5,7 @@ using UnityEngine;
 using UniRx;
 using UniRx.Triggers;
 using DG.Tweening;
+using System.Threading.Tasks;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Dice : MonoBehaviour
@@ -51,17 +52,48 @@ public class Dice : MonoBehaviour
         this.UpdateAsObservable()
             .Subscribe(value =>
             {
-               
-               
+                if (!_delayFinished)
+                {
+                    return;
+                }
+                RolledDicesValue();
 
             })
             .AddTo(subscriptions);
 
     }
-   
-    
-   
 
+    private void RolledDicesValue()
+    {
+        if(!_hasStoppedRolling && rb.velocity.sqrMagnitude==0)
+        {
+            _hasStoppedRolling = true;
+            GetNumberOnTopFace();
+        }
+    }
+
+    private int GetNumberOnTopFace()
+    {
+        if(diceFaces==null)
+        {
+            return -1;
+        }
+        var topFace = 0;
+        var lastYPosition = diceFaces[0].position.y;
+        for (int i = 0; i < diceFaces.Length; i++)
+        {
+            if (diceFaces[i].position.y>lastYPosition)
+            {
+                lastYPosition = diceFaces[i].position.y;
+                topFace = i;
+            }
+        }
+        OnDiceResult?.Invoke(_diceIndex, topFace + 1);
+        Debug.Log($"Dice result{topFace +1}");
+        return topFace + 1;
+    }
+
+   
 
 
 
@@ -75,14 +107,14 @@ public class Dice : MonoBehaviour
         var randY = UnityEngine.Random.Range(0, 1f);
         var randZ = UnityEngine.Random.Range(0, 1f);
         rb.AddTorque(new Vector3(randX, randY, randZ)*(rollForce+randomVariance),ForceMode.Impulse);
-        StartCoroutine(ButtonsReScale());
+        DelayedResult();
 
     }
 
-    private IEnumerator ButtonsReScale()
+    private async void DelayedResult()
     {
-      
-        yield return new WaitForSeconds(3f);
+        await Task.Delay(2000);
+        _delayFinished = true;
         OnDiceRollScale?.Invoke(Vector3.one, Ease.InOutBounce);      
     }
 
