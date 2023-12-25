@@ -22,14 +22,13 @@ public class DiceThrower : MonoBehaviour
 
     }
 
-    private IEnumerator RollDice()
+    private void RollDice()
     {
-        if (diceToThrow == null)
-        { yield return null; }
-      
+       
         foreach (var die in _spawnedDice)
         {
-            die.gameObject.SetActive(false);
+            //die.gameObject.SetActive(false);
+            Destroy(die);
             // TO DO : USE oBJECT POOLING
         }
         for (int i = 0; i < amountOfDice; i++)
@@ -38,8 +37,6 @@ public class DiceThrower : MonoBehaviour
             dice.transform.SetParent(this.transform);
             _spawnedDice.Add(dice.gameObject);
             dice.RollDice(throwForce, rollForce, i);
-            yield return new WaitForSeconds(0.1f);
-
         }
     }
 

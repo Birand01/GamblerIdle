@@ -25,14 +25,14 @@ public class DiceAwardManager : MonoBehaviour
     {
        
         StartCoroutine(Subscribe());
-        Dice.OnDiceCalculation += QuestionStatusCheck;
+      
       
     }
    
 
     private void OnDisable()
     {
-        Dice.OnDiceCalculation -= QuestionStatusCheck;
+      
         subscriptions.Clear();
     }
 
@@ -64,7 +64,6 @@ public class DiceAwardManager : MonoBehaviour
         {
             if (transform.GetChild(j).gameObject.activeInHierarchy)
             {
-
                 betRate = transform.GetChild(j).gameObject.GetComponent<DiceQuestionConfiguration>().gameQuestionSO.betRate;
                 currentOperation = transform.GetChild(j).gameObject.GetComponent<DiceQuestionConfiguration>().gameQuestionSO.operation;
                 currentExpectedDiceValue = transform.GetChild(j).gameObject.GetComponent<DiceQuestionConfiguration>().gameQuestionSO.expectedRolledDiceValue;
@@ -74,13 +73,18 @@ public class DiceAwardManager : MonoBehaviour
                     case Operation.Sum:
                         if(sum==currentExpectedDiceValue)
                         {
-                            Debug.Log("A");
-                           StartCoroutine(OnGetAward?.Invoke(betRate));
+                           Debug.Log("A");
+                           //StartCoroutine(OnGetAward?.Invoke(betRate));
                         }
                         else
                         {
-                            StartCoroutine(OnGetAward?.Invoke(-betRate));
+
+                            //StartCoroutine(OnGetAward?.Invoke(-betRate));
+                            moneyManager.totalMoneyAmount -= betRate;
+                            moneyManager.moneyCounterText.text=moneyManager.totalMoneyAmount.ToString();
+                            Debug.Log("TOTAL MONEY AMOUNT " +moneyManager.totalMoneyAmount);
                             Debug.Log("B");
+                            
                         }
                         break;
                     case Operation.Multiplication:
@@ -94,7 +98,9 @@ public class DiceAwardManager : MonoBehaviour
                 //OnExpectedDiceOutCome?.Invoke(transform.GetChild(j).gameObject.GetComponent<DiceQuestionConfiguration>().gameQuestionSO.operation,
                 // transform.GetChild(j).gameObject.GetComponent<DiceQuestionConfiguration>().gameQuestionSO.expectedRolledDiceValue);
                 // Debug.Log(transform.GetChild(j).gameObject.GetComponent<DiceQuestionConfiguration>().gameQuestionSO.operation + "--" + transform.GetChild(j).gameObject.GetComponent<DiceQuestionConfiguration>().gameQuestionSO.expectedRolledDiceValue);
+              
                 break;
+               
             }
         }
        

@@ -120,8 +120,8 @@
     <Compile Include="Assets\Scripts\UI\Buttons\Wheel\BetButtons\IncreaseBet.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\Wheel\BetButtons\Base\BetOptionBase.cs" />
     <Compile Include="Assets\Scripts\Base\RotatorBase.cs" />
-    <Compile Include="Assets\Scripts\GambleAreas\Dice\DiceTable\DiceTable.cs" />
     <Compile Include="Assets\Scripts\UI\Buttons\DiceGameExitButton\QuestionButtons\ButtonScale.cs" />
+    <Compile Include="Assets\Scripts\GambleAreas\Dice\DiceTable\DiceTable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

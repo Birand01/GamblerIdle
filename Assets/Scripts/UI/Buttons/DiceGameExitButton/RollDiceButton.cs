@@ -14,8 +14,8 @@ public class RollDiceButton : MonoBehaviour
 
     private Button button;
    
-    public delegate IEnumerator OnRollDiceEventHandler();
-    public static event OnRollDiceEventHandler OnRollDice;
+   
+    public static event Action OnRollDice;
 
     private void OnEnable()
     {
@@ -58,7 +58,7 @@ public class RollDiceButton : MonoBehaviour
 
     private void OnButtonClickEvent()
     {
-       StartCoroutine( OnRollDice?.Invoke());
+       OnRollDice?.Invoke();
     }
 
     private void IsButtonInteractable(bool state)
